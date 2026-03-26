@@ -1044,6 +1044,28 @@ body{
 let stream=null, capturedImages=[], currentShot=0, timerInterval=null, isRunning=false;
 let currentFilter='none', activeTheme='newspaper';
 
+/* ══════════════════════════════════
+   SESSION STORAGE – simpan & pulihkan state saat refresh
+══════════════════════════════════ */
+function saveState(){
+  try{
+    sessionStorage.setItem('gs_theme', activeTheme);
+    sessionStorage.setItem('gs_size', activeSize);
+    if(capturedImages.length>0){
+      sessionStorage.setItem('gs_images', JSON.stringify(capturedImages));
+      sessionStorage.setItem('gs_hasResult', '1');
+    }
+  }catch(e){}
+}
+function clearSavedState(){
+  try{
+    sessionStorage.removeItem('gs_theme');
+    sessionStorage.removeItem('gs_size');
+    sessionStorage.removeItem('gs_images');
+    sessionStorage.removeItem('gs_hasResult');
+  }catch(e){}
+}
+
 const video=document.getElementById('video');
 const canvas=document.getElementById('captureCanvas');
 const ctx=canvas.getContext('2d');
@@ -1076,6 +1098,7 @@ function setTheme(name, btn){
   activeTheme=name;
   document.querySelectorAll('.theme-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
+  saveState();
   // update result if already shot
   if(capturedImages.length>0){
     populateTheme(name);
@@ -1170,6 +1193,7 @@ function finishSession(){
   resetDots();setStatus('★ Sesi selesai! Hasil foto siap di bawah.');
   btnReset.style.display='inline-block';
   populateAllThemes();
+  saveState();
   document.getElementById('result-section').classList.add('visible');
   setTimeout(()=>document.getElementById('result-section').scrollIntoView({behavior:'smooth'}),200);
 }
@@ -1282,6 +1306,7 @@ function resetAll(){
   clearInterval(timerInterval);overlay.classList.remove('active');
   resetDots();btnStart.disabled=(stream===null);btnReset.style.display='none';
   document.getElementById('result-section').classList.remove('visible');
+  clearSavedState();
   setStatus('Siap untuk sesi baru. Tekan Mulai Sesi Foto!');
   window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -1298,6 +1323,7 @@ function setSize(size, btn){
   activeSize=size;
   document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
+  saveState();
   applyCurrentSize();
 }
 function applyCurrentSize(){
@@ -1420,8 +1446,46 @@ async function kirimWA(){
   ['np-tanggal','fl-tanggal','lx-tanggal','jp-tanggal','film-tanggal','sp-tanggal','tg-tanggal'].forEach(id=>{
     const el=document.getElementById(id);if(el)el.textContent=ds;
   });
-  // Init all themes with size
-  applyCurrentSize();
+
+  /* ── Pulihkan state dari sessionStorage ── */
+  try{
+    // Pulihkan tema
+    const savedTheme = sessionStorage.getItem('gs_theme');
+    if(savedTheme){
+      activeTheme = savedTheme;
+      // Aktifkan tombol tema yang sesuai
+      document.querySelectorAll('.theme-btn').forEach(btn=>{
+        const match = btn.getAttribute('onclick') && btn.getAttribute('onclick').includes("'"+savedTheme+"'");
+        btn.classList.toggle('active', !!match);
+      });
+    }
+
+    // Pulihkan ukuran
+    const savedSize = sessionStorage.getItem('gs_size');
+    if(savedSize){
+      activeSize = savedSize;
+      document.querySelectorAll('.size-btn').forEach(btn=>{
+        const isMatch = btn.id === 'size'+savedSize.toUpperCase();
+        btn.classList.toggle('active', isMatch);
+      });
+    }
+
+    // Pulihkan foto & tampilkan hasil
+    const savedImages = sessionStorage.getItem('gs_images');
+    const hasResult   = sessionStorage.getItem('gs_hasResult');
+    if(savedImages && hasResult){
+      capturedImages = JSON.parse(savedImages);
+      populateAllThemes();
+      document.getElementById('result-section').classList.add('visible');
+      document.getElementById('btnReset').style.display='inline-block';
+      setStatus('★ Foto dipulihkan setelah refresh. Unduh atau mulai sesi baru.');
+    } else {
+      // Init semua tema dengan ukuran tanpa foto
+      applyCurrentSize();
+    }
+  }catch(e){
+    applyCurrentSize();
+  }
 })();
 </script>
 </body>
