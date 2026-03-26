@@ -481,39 +481,64 @@ body{
 .theme-result.size-a5{transform:scale(0.707);transform-origin:top center;margin-bottom:-175px;}
 
 /* ════════════════════════════════════════════════════════
-   QR MODAL (reuses .gmail-box styles)
+   WA MODAL
 ════════════════════════════════════════════════════════ */
-#qr-modal{
+#wa-modal{
   display:none;position:fixed;inset:0;z-index:9999;
   background:rgba(0,0,0,.78);align-items:center;justify-content:center;
 }
-#qr-modal.open{display:flex;}
-.gmail-box{
+#wa-modal.open{display:flex;}
+.wa-box{
   background:#1e1b18;border:1px solid #444;border-radius:6px;
-  padding:28px 32px;width:420px;max-width:95vw;
+  padding:28px 32px;width:440px;max-width:95vw;
   font-family:'Libre Baskerville',serif;color:#f0ece4;
   position:relative;box-shadow:0 20px 60px rgba(0,0,0,.6);
 }
-.gmail-box h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:6px;color:#f5f0e8;}
-.gmail-box p{font-size:11px;color:#888;margin-bottom:20px;line-height:1.6;}
-.gmail-form-row{margin-bottom:14px;}
-.gmail-form-row label{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#888;margin-bottom:5px;}
-.gmail-form-row input{
+.wa-box h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:4px;color:#f5f0e8;}
+.wa-box .wa-sub{font-size:10px;color:#666;margin-bottom:20px;line-height:1.6;font-style:italic;}
+.wa-form-row{margin-bottom:14px;}
+.wa-form-row label{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#888;margin-bottom:5px;}
+.wa-form-row input{
   width:100%;background:#111;border:1px solid #444;color:#f0ece4;
-  padding:10px 12px;font-family:'Libre Baskerville',serif;font-size:12px;
-  border-radius:3px;outline:none;
+  padding:10px 12px;font-family:'Libre Baskerville',serif;font-size:13px;
+  border-radius:3px;outline:none;letter-spacing:.04em;
 }
-.gmail-form-row input:focus{border-color:#aaa;}
-.gmail-actions{display:flex;gap:10px;margin-top:20px;}
-.btn-gmail{background:#c0392b;color:#fff;border:2px solid #922b21;padding:10px 22px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .2s;font-family:'Libre Baskerville',serif;}
-.btn-gmail:hover{background:#922b21;}
-.btn-gmail:disabled{opacity:.4;cursor:not-allowed;}
-.btn-cancel-modal{background:transparent;color:#888;border:2px solid #444;padding:10px 18px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:2px;font-family:'Libre Baskerville',serif;}
-.btn-cancel-modal:hover{color:#ccc;border-color:#888;}
-#gmail-status{margin-top:12px;font-size:11px;font-style:italic;color:#888;min-height:18px;text-align:center;}
-.gmail-progress{display:none;width:100%;height:3px;background:#2a2a2a;border-radius:2px;margin-top:12px;overflow:hidden;}
-.gmail-progress.active{display:block;}
-.gmail-progress-bar{height:100%;width:0;background:linear-gradient(90deg,#c0392b,#e74c3c);border-radius:2px;transition:width .4s ease;}
+.wa-form-row input:focus{border-color:#25d366;}
+.wa-form-row input::placeholder{color:#555;}
+.wa-preview{
+  width:100%;height:120px;background:#111;border:1px solid #333;
+  border-radius:3px;overflow:hidden;margin-bottom:16px;position:relative;
+}
+.wa-preview img{width:100%;height:100%;object-fit:contain;display:block;}
+.wa-preview-label{position:absolute;top:5px;left:8px;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:#555;}
+.wa-actions{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap;}
+.btn-wa{
+  background:#25d366;color:#fff;border:2px solid #1da851;
+  padding:11px 22px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  cursor:pointer;border-radius:3px;transition:all .2s;
+  font-family:'Libre Baskerville',serif;flex:1;
+}
+.btn-wa:hover{background:#1da851;}
+.btn-wa:disabled{opacity:.4;cursor:not-allowed;}
+.btn-cancel-wa{
+  background:transparent;color:#888;border:2px solid #444;
+  padding:11px 18px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  cursor:pointer;border-radius:3px;font-family:'Libre Baskerville',serif;
+}
+.btn-cancel-wa:hover{color:#ccc;border-color:#888;}
+#wa-status{margin-top:10px;font-size:10px;font-style:italic;color:#888;min-height:16px;text-align:center;line-height:1.5;}
+.wa-step{
+  display:flex;gap:10px;align-items:flex-start;
+  background:rgba(37,211,102,.06);border:1px solid rgba(37,211,102,.18);
+  border-radius:4px;padding:10px 12px;margin-bottom:14px;
+}
+.wa-step-num{
+  width:20px;height:20px;border-radius:50%;background:#25d366;color:#fff;
+  font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:1px;
+}
+.wa-step-text{font-size:10px;color:#999;line-height:1.55;}
+.wa-step-text strong{color:#ccc;display:block;margin-bottom:1px;}
 
 /* responsive */
 @media(max-width:720px){
@@ -534,13 +559,13 @@ body{
 
 <!-- ══════════ THEME PICKER ══════════ -->
 <div class="theme-picker">
-  <button class="theme-btn active" onclick="setTheme('newspaper',this)">🗞 Koran Klasik</button>
-  <button class="theme-btn" onclick="setTheme('floral',this)">🌸 Floral Vintage</button>
-  <button class="theme-btn" onclick="setTheme('luxury',this)">✦ Dark Luxury Gold</button>
-  <button class="theme-btn" onclick="setTheme('japan',this)">⛩ Japanese Minimal</button>
-  <button class="theme-btn" onclick="setTheme('film',this)">🎞 Film Strip</button>
-  <button class="theme-btn" onclick="setTheme('sport',this)">⚡ Tabloid Sport</button>
-  <button class="theme-btn" onclick="setTheme('telegram',this)">📰 Koran Retro</button>
+  <button class="theme-btn active" onclick="setTheme('newspaper',this)"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:-2px;margin-right:5px"><rect x="1" y="2" width="14" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="3" y="5" width="10" height="1.5" rx=".5"/><rect x="3" y="8" width="6" height="1.2" rx=".4"/><rect x="3" y="10.5" width="8" height="1.2" rx=".4"/></svg>Koran Klasik</button>
+  <button class="theme-btn" onclick="setTheme('floral',this)"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:-2px;margin-right:5px"><circle cx="8" cy="8" r="2"/><circle cx="8" cy="3.5" r="1.8"/><circle cx="12.1" cy="5.9" r="1.8"/><circle cx="12.1" cy="10.1" r="1.8"/><circle cx="8" cy="12.5" r="1.8"/><circle cx="3.9" cy="10.1" r="1.8"/><circle cx="3.9" cy="5.9" r="1.8"/></svg>Floral Vintage</button>
+  <button class="theme-btn" onclick="setTheme('luxury',this)"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:-2px;margin-right:5px"><polygon points="8,1 10.2,5.5 15,6.2 11.5,9.6 12.4,14.4 8,12.1 3.6,14.4 4.5,9.6 1,6.2 5.8,5.5"/></svg>Dark Luxury Gold</button>
+  <button class="theme-btn" onclick="setTheme('japan',this)"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:-2px;margin-right:5px"><path d="M8 1 L8 4" stroke="currentColor" stroke-width="1.3" fill="none"/><path d="M3 4 Q3 2 8 1 Q13 2 13 4 L12 14 Q8 15.5 4 14 Z" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M3 4 L13 4" stroke="currentColor" stroke-width="1.2"/><line x1="5.5" y1="7" x2="10.5" y2="7" stroke="currentColor" stroke-width="1"/><line x1="6" y1="10" x2="10" y2="10" stroke="currentColor" stroke-width="1"/></svg>Japanese Minimal</button>
+  <button class="theme-btn" onclick="setTheme('film',this)"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" style="vertical-align:-2px;margin-right:5px"><rect x="1" y="3" width="14" height="10" rx="1"/><rect x="1" y="3" width="2.5" height="10" fill="currentColor" stroke="none" rx=".5"/><rect x="12.5" y="3" width="2.5" height="10" fill="currentColor" stroke="none" rx=".5"/><rect x="2" y="5" width="1" height="1.5" rx=".3" fill="#fff" stroke="none"/><rect x="2" y="7.5" width="1" height="1.5" rx=".3" fill="#fff" stroke="none"/><rect x="2" y="10" width="1" height="1.5" rx=".3" fill="#fff" stroke="none"/><rect x="13" y="5" width="1" height="1.5" rx=".3" fill="#fff" stroke="none"/><rect x="13" y="7.5" width="1" height="1.5" rx=".3" fill="#fff" stroke="none"/><rect x="13" y="10" width="1" height="1.5" rx=".3" fill="#fff" stroke="none"/><rect x="4.5" y="4.5" width="7" height="7" rx=".5" stroke="currentColor"/></svg>Film Strip</button>
+  <button class="theme-btn" onclick="setTheme('sport',this)"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:-2px;margin-right:5px"><path d="M8 1 L9.5 5.5 H14.5 L10.5 8.5 L12 13 L8 10 L4 13 L5.5 8.5 L1.5 5.5 H6.5 Z" stroke="currentColor" stroke-width=".5"/></svg>Tabloid Sport</button>
+  <button class="theme-btn" onclick="setTheme('telegram',this)"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:-2px;margin-right:5px"><rect x="1" y="2" width="14" height="12" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="3" y="4.5" width="10" height="2" rx=".5"/><rect x="3" y="8" width="4.5" height="1.2" rx=".4"/><rect x="3" y="10.2" width="4.5" height="1.2" rx=".4"/><rect x="9" y="8" width="4" height="3.5" rx=".5" fill="none" stroke="currentColor" stroke-width="1"/></svg>Koran Retro</button>
 </div>
 
 <!-- ══════════ SIZE PICKER ══════════ -->
@@ -554,7 +579,7 @@ body{
 <div id="camera-panel">
   <div class="cam-wrap">
     <div id="cam-off">
-      <span>📷</span>
+      <span><svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="13" width="40" height="28" rx="4" stroke="#444" stroke-width="2.5"/><circle cx="23" cy="27" r="9" stroke="#444" stroke-width="2.5"/><circle cx="23" cy="27" r="5" stroke="#444" stroke-width="2"/><path d="M15 13 L18 7 H28 L31 13" stroke="#444" stroke-width="2.2" fill="none"/><circle cx="37" cy="20" r="2" fill="#444"/></svg></span>
       <p>Kamera belum aktif — tekan "Aktifkan Kamera"</p>
     </div>
     <video id="video" autoplay playsinline style="display:none;"></video>
@@ -570,15 +595,15 @@ body{
     <div class="shot-dot" id="dot2"></div>
   </div>
   <div class="controls">
-    <button class="btn btn-secondary" id="btnCam" onclick="startCamera()">📷 Aktifkan Kamera</button>
-    <div class="ctrl-wrap">⏱
+    <button class="btn btn-secondary" id="btnCam" onclick="startCamera()"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="vertical-align:-2px;margin-right:5px"><rect x="1" y="4" width="14" height="10" rx="2"/><circle cx="8" cy="9.5" r="3"/><path d="M5 4 L6.5 2 H9.5 L11 4" stroke="currentColor" fill="none"/><circle cx="12.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg>Aktifkan Kamera</button>
+    <div class="ctrl-wrap"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="vertical-align:-2px;margin-right:4px"><circle cx="8" cy="9" r="6"/><path d="M8 6 L8 9 L10.5 11" stroke-linecap="round"/><path d="M6 1 L10 1" stroke-linecap="round"/><path d="M8 1 L8 3" stroke-linecap="round"/></svg>
       <select id="timerSel">
         <option value="3">3 detik</option>
         <option value="5" selected>5 detik</option>
         <option value="10">10 detik</option>
       </select>
     </div>
-    <div class="ctrl-wrap">🎞
+    <div class="ctrl-wrap"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" style="vertical-align:-2px;margin-right:4px"><rect x="1" y="3" width="14" height="10" rx="1"/><rect x="1" y="3" width="2" height="10" fill="currentColor" stroke="none"/><rect x="13" y="3" width="2" height="10" fill="currentColor" stroke="none"/><rect x="1.5" y="4.5" width="1" height="1.5" fill="#fff" stroke="none" rx=".2"/><rect x="1.5" y="7.5" width="1" height="1.5" fill="#fff" stroke="none" rx=".2"/><rect x="1.5" y="10.5" width="1" height="1.5" fill="#fff" stroke="none" rx=".2"/><rect x="13.5" y="4.5" width="1" height="1.5" fill="#fff" stroke="none" rx=".2"/><rect x="13.5" y="7.5" width="1" height="1.5" fill="#fff" stroke="none" rx=".2"/><rect x="13.5" y="10.5" width="1" height="1.5" fill="#fff" stroke="none" rx=".2"/></svg>
       <select id="filterSel" onchange="applyFilter()">
         <option value="none">Warna Asli</option>
         <option value="grayscale(100%) contrast(1.1)">Hitam Putih</option>
@@ -616,13 +641,8 @@ body{
     <div class="np-photo-main" id="np-main"><div class="empty-ph">[ Foto 1 ]</div></div>
     <div class="np-mid">
       <div class="np-mid-logo">
-        <svg viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
-          <rect x="1" y="1" width="36" height="36" stroke="#1a1410" stroke-width="2"/>
-          <path d="M4 34 L19 6 L34 34" stroke="#1a1410" stroke-width="1.8" fill="none"/>
-          <path d="M10 34 L19 18 L28 34" fill="#1a1410"/>
-          <circle cx="19" cy="6" r="2.5" fill="#1a1410"/>
-        </svg>
-      </div>
+  <img src="wilmar.png" width="50" height="50" alt="logo">
+</div>
       <div class="np-mid-title"><h2>Gresik Kota Baru:<br>Kota yang Tumbuh,<br>Momen yang Abadi</h2></div>
       <div class="np-mid-tag"><span>PHOTOBOX<br>MEMORIES</span></div>
     </div>
@@ -632,10 +652,17 @@ body{
         <p>Di sudut kota yang terus berkembang, Gresik Kota Baru menjadi latar kisah baru. Di antara gedung muda dan jalan lebar, kenangan tumbuh bersama langkah kaki yang menapak penuh semangat.</p>
       </div>
       <div class="np-col">
-        <div class="np-center-box">
+        <div class="np-center-box" id="np-gresik-box">
           <div class="cb-label">— Studio Pilihan Anda —</div>
           <div class="cb-name" style="font-family:'UnifrakturMaguntia',cursive;font-size:20px;line-height:1;margin-bottom:3px;">GarkevStudio</div>
           <p>Mengabadikan setiap momen<br>di Gresik Kota Baru.</p>
+          <!-- =====================================================
+               GANTI src="foto_gresik.jpg" dengan path foto Anda
+               ===================================================== -->
+          <div style="margin-top:6px;width:100%;height:68px;overflow:hidden;border:1px solid #1a1410;">
+            <img src="gresik.jpg" alt="Gresik Kota Baru"
+                 style="width:100%;height:100%;object-fit:cover;display:block;filter:sepia(15%) contrast(1.05);">
+          </div>
         </div>
         <p style="margin-top:5px;font-size:7.8px;line-height:1.55;text-align:justify;">Gresik Kota Baru hadir sebagai kawasan modern yang menyimpan wajah baru Gresik — kota industri yang kini memeluk gaya hidup dan kenangan hangat bersama orang-orang tercinta.</p>
       </div>
@@ -671,6 +698,13 @@ body{
         <div class="fc-name">GarkevStudio</div>
         <div class="fl-rule" style="margin:4px auto;"></div>
         <p>Mengabadikan setiap<br>momen indah bersama<br>orang tersayang<br>di Gresik Kota Baru.</p>
+        <!-- =====================================================
+             GANTI src="foto_gresik.jpg" dengan path foto Anda
+             ===================================================== -->
+        <div style="margin-top:6px;width:100%;height:60px;overflow:hidden;border:1px solid #c8a47a;">
+          <img src="gresik.jpg" alt="Gresik Kota Baru"
+               style="width:100%;height:100%;object-fit:cover;display:block;filter:sepia(25%) contrast(1.05);">
+        </div>
       </div>
       <div>
         <div class="fl-sm-photo" id="fl-sm2"><div class="empty-ph">[ Foto 3 ]</div><div class="fl-sm-label">Abadi ✿</div></div>
@@ -705,6 +739,13 @@ body{
         <div class="lc-name">Garkev<br>Studio</div>
         <div class="lc-diamond" style="font-size:8px;letter-spacing:.2em;color:#7a6230;margin-top:2px;">✦ GRESIK ✦</div>
         <p style="margin-top:4px;">Mengabadikan setiap momen berharga dengan sentuhan premium dan estetika tak terlupakan.</p>
+        <!-- =====================================================
+             GANTI src="foto_gresik.jpg" dengan path foto Anda
+             ===================================================== -->
+        <div style="margin-top:6px;width:100%;height:60px;overflow:hidden;border:1px solid rgba(180,140,60,.4);">
+          <img src="gresik.jpg" alt="Gresik Kota Baru"
+               style="width:100%;height:100%;object-fit:cover;display:block;filter:sepia(15%) contrast(1.1) brightness(.85);">
+        </div>
       </div>
       <div>
         <div class="lx-sm" id="lx-sm2"><div class="empty-ph">[ Foto 3 ]</div></div>
@@ -758,6 +799,13 @@ body{
           <div class="jc-name">Garkev<br>Studio</div>
           <div class="jp-rule-short"></div>
           <p>Mengabadikan setiap momen indah di Gresik Kota Baru dengan sentuhan terbaik.</p>
+          <!-- =====================================================
+               GANTI src="foto_gresik.jpg" dengan path foto Anda
+               ===================================================== -->
+          <div style="margin-top:6px;width:100%;height:56px;overflow:hidden;border:1px solid #c0392b;">
+            <img src="gresik.jpg" alt="Gresik Kota Baru"
+                 style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
         </div>
       </div>
       <div>
@@ -800,6 +848,17 @@ body{
         <span class="film-footer-center">GarkevStudio</span>
         <span id="film-tanggal">—</span>
       </div>
+      <!-- Gresik photo — permanen, ganti src di bawah -->
+      <!-- =====================================================
+           GANTI src="foto_gresik.jpg" dengan path foto Anda
+           ===================================================== -->
+      <div style="margin-top:12px;border-top:1px solid #2a2a2a;padding-top:10px;display:flex;align-items:center;gap:10px;">
+        <div style="font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:#555;flex-shrink:0;">Foto<br>Gresik</div>
+        <div style="flex:1;height:56px;overflow:hidden;border:1px solid #333;">
+          <img src="gresik.jpg" alt="Gresik Kota Baru"
+               style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+      </div>
     </div>
     <div class="film-holes" id="film-holes-bot"></div>
   </div>
@@ -839,6 +898,13 @@ body{
             <div class="sc-title">★ Studio ★</div>
             <div class="sc-name">GARKEV<br>STUDIO</div>
             <div class="sc-sub">Gresik Kota Baru · Jawa Timur</div>
+            <!-- =====================================================
+                 GANTI src="foto_gresik.jpg" dengan path foto Anda
+                 ===================================================== -->
+            <div style="margin-top:6px;width:100%;height:50px;overflow:hidden;border:1px solid #cc0000;">
+              <img src="gresik.jpg" alt="Gresik Kota Baru"
+                   style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
           </div>
           <div class="sp-sm-photo" id="sp-sm2">
             <div class="empty-ph">[ Foto 3 ]</div>
@@ -887,6 +953,13 @@ body{
           <div class="ca-orn">✦ ◈ ✦</div>
           <div class="ca-name">GarkevStudio</div>
           <div class="ca-sub">Photobox Premium · Gresik</div>
+          <!-- =====================================================
+               GANTI src="foto_gresik.jpg" dengan path foto Anda
+               ===================================================== -->
+          <div style="margin-top:6px;width:100%;height:56px;overflow:hidden;border:1px solid #0a0a0a;">
+            <img src="gresik.jpg" alt="Gresik Kota Baru"
+                 style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(30%) contrast(1.1);">
+          </div>
         </div>
       </div>
       <div class="tg-side">
@@ -915,45 +988,51 @@ body{
 
   <!-- ACTION BUTTONS -->
   <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
-    <button class="btn btn-download" id="btnDownload" onclick="downloadResult()">⬇ Unduh Foto</button>
-    <button class="btn btn-secondary" id="btnQR" onclick="openQRModal()" style="background:#6c3483;color:#fff;border-color:#512e5f;">📱 QR Code</button>
-    <button class="btn btn-secondary" onclick="resetAll()">↺ Ambil Foto Baru</button>
+    <button class="btn btn-download" id="btnDownload" onclick="downloadResult()"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" style="vertical-align:-2px;margin-right:5px"><path d="M8 2 L8 11" stroke-linecap="round"/><path d="M4 8 L8 12 L12 8" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 13 L14 13" stroke-linecap="round"/></svg>Unduh Foto</button>
+    <button class="btn btn-secondary" id="btnWA" onclick="openWAModal()" style="background:#25d366;color:#fff;border-color:#1da851;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="vertical-align:-2px;margin-right:5px"><path d="M8 1.5 C4.4 1.5 1.5 4.4 1.5 8 C1.5 9.3 1.9 10.5 2.6 11.5 L1.5 14.5 L4.6 13.4 C5.6 14 6.8 14.5 8 14.5 C11.6 14.5 14.5 11.6 14.5 8 C14.5 4.4 11.6 1.5 8 1.5 Z" stroke="currentColor"/><path d="M5.5 7 C5.5 7 5.8 8.5 7.5 10 C9.2 11.5 10.5 11.5 10.5 11.5" stroke="currentColor" stroke-linecap="round"/><path d="M5.5 5 L6.5 7 L5.5 8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 11.5 L8.5 10.5 L9.5 9.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>Kirim via WA</button>
+    <button class="btn btn-secondary" onclick="resetAll()"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" style="vertical-align:-2px;margin-right:5px"><path d="M2 8 C2 4.7 4.7 2 8 2 C10.5 2 12.6 3.5 13.6 5.5" stroke-linecap="round"/><path d="M14 8 C14 11.3 11.3 14 8 14 C5.5 14 3.4 12.5 2.4 10.5" stroke-linecap="round"/><path d="M13 3 L14 6 L11 5.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 13 L2 10 L5 10.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Ambil Foto Baru</button>
   </div>
 </div><!-- /#result-section -->
 
-<!-- ══════════ QR MODAL ══════════ -->
-<div id="qr-modal">
-  <div class="gmail-box" style="max-width:480px;text-align:center;">
-    <h3 style="margin-bottom:6px;">📱 Scan QR — Lihat Foto di HP</h3>
-    <p id="qr-desc" style="font-size:10px;color:#888;margin-bottom:16px;line-height:1.6;">Scan QR code ini dengan kamera HP. Foto akan langsung terbuka di browser HP Anda.</p>
+<!-- ══════════ WA MODAL ══════════ -->
+<div id="wa-modal">
+  <div class="wa-box">
+    <h3><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="vertical-align:-3px;margin-right:6px"><path d="M8 1.5 C4.4 1.5 1.5 4.4 1.5 8 C1.5 9.3 1.9 10.5 2.6 11.5 L1.5 14.5 L4.6 13.4 C5.6 14 6.8 14.5 8 14.5 C11.6 14.5 14.5 11.6 14.5 8 C14.5 4.4 11.6 1.5 8 1.5 Z"/><path d="M5.5 7.5 Q5.5 9.5 8 10.5 Q10 11.5 10.5 11" stroke-linecap="round"/></svg>Kirim Foto via WhatsApp</h3>
+    <p class="wa-sub">Foto akan diunduh otomatis, lalu WhatsApp dibuka ke nomor tujuan.</p>
 
-    <!-- Loading -->
-    <div id="qr-loading" style="padding:30px 0;color:#888;font-size:12px;font-style:italic;">
-      ⏳ Memproses foto…
+    <!-- Preview foto -->
+    <div class="wa-preview" id="wa-preview-wrap">
+      <div class="wa-preview-label">Preview Foto</div>
+      <img id="wa-preview-img" src="" alt="preview">
     </div>
 
-    <!-- QR Display -->
-    <div id="qr-display" style="display:none;">
-      <div id="qr-canvas-wrap" style="display:inline-block;background:#fff;padding:14px;border-radius:6px;margin-bottom:14px;box-shadow:0 4px 20px rgba(0,0,0,.5);">
-        <canvas id="qr-canvas"></canvas>
-      </div>
-      <div style="font-size:10px;color:#666;margin-bottom:8px;">⏱ Link aktif selama <span id="qr-timer" style="color:#f5f0e8;font-weight:700;">60:00</span></div>
-      <div style="font-size:9px;color:#555;line-height:1.6;margin-bottom:12px;">
-        Arahkan kamera HP ke QR code di atas.<br>Foto terbuka langsung di browser HP &amp; bisa disimpan ke galeri.
-      </div>
-      <div style="margin-bottom:14px;">
-        <a id="qr-open-link" href="#" target="_blank" style="display:none;background:#2980b9;color:#fff;text-decoration:none;padding:8px 18px;border-radius:3px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-family:'Libre Baskerville',serif;">🔗 Buka Link Foto</a>
-      </div>
-      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-        <button class="btn-gmail" onclick="regenerateQR()" style="font-size:10px;padding:8px 16px;">🔄 Perbarui QR</button>
-        <button class="btn-cancel-modal" onclick="closeQRModal()">Tutup</button>
-      </div>
+    <!-- Input nomor WA -->
+    <div class="wa-form-row">
+      <label>Nomor WhatsApp Tujuan</label>
+      <input type="tel" id="wa-nomor"
+        placeholder="cth: 08123456789 atau 628123456789"
+        maxlength="20">
     </div>
 
-    <!-- Error -->
-    <div id="qr-error" style="display:none;color:#e74c3c;font-size:11px;padding:16px 0;">
-      <div id="qr-error-msg"></div>
-      <button class="btn-cancel-modal" style="margin-top:12px;" onclick="closeQRModal()">Tutup</button>
+    <!-- Langkah-langkah -->
+    <div class="wa-step">
+      <div class="wa-step-num">1</div>
+      <div class="wa-step-text"><strong>Foto otomatis diunduh</strong>Saat klik Kirim, foto tersimpan ke galeri/folder Unduhan.</div>
+    </div>
+    <div class="wa-step">
+      <div class="wa-step-num">2</div>
+      <div class="wa-step-text"><strong>WhatsApp terbuka otomatis</strong>Browser langsung membuka chat WA ke nomor yang dimasukkan.</div>
+    </div>
+    <div class="wa-step">
+      <div class="wa-step-num">3</div>
+      <div class="wa-step-text"><strong>Lampirkan &amp; kirim</strong>Di WA, tekan ikon lampiran → pilih foto yang baru diunduh → kirim.</div>
+    </div>
+
+    <div id="wa-status"></div>
+
+    <div class="wa-actions">
+      <button class="btn-wa" id="btn-wa-kirim" onclick="kirimWA()"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="vertical-align:-2px;margin-right:5px"><path d="M8 2 L8 10" stroke-linecap="round"/><path d="M5 8 L8 11 L11 8" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12 L14 12" stroke-linecap="round"/><path d="M2 14 L14 14" stroke-linecap="round"/></svg>Unduh &amp; Buka WA</button>
+      <button class="btn-cancel-wa" onclick="closeWAModal()">Batal</button>
     </div>
   </div>
 </div>
@@ -1018,11 +1097,11 @@ async function startCamera(){
     video.style.display='block';
     document.getElementById('cam-off').style.display='none';
     btnStart.disabled=false;
-    document.getElementById('btnCam').textContent='✔ Kamera Aktif';
+    document.getElementById('btnCam').innerHTML='<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="vertical-align:-2px;margin-right:5px"><rect x="1" y="4" width="14" height="10" rx="2"/><circle cx="8" cy="9.5" r="3"/><path d="M5 4 L6.5 2 H9.5 L11 4"/><circle cx="12.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg>&#10003; Kamera Aktif';
     document.getElementById('btnCam').disabled=true;
     setStatus('Kamera aktif! Pilih tema, timer, lalu tekan Mulai.');
     applyFilter();
-  }catch(e){setStatus('⚠ Gagal mengakses kamera: '+e.message);}
+  }catch(e){setStatus('[!] Gagal mengakses kamera: '+e.message);}
 }
 function applyFilter(){
   currentFilter=document.getElementById('filterSel').value;
@@ -1047,11 +1126,11 @@ function takeNextShot(){
   overlay.classList.add('active');
   shotLabel.textContent=`Foto ${currentShot+1} dari 3`;
   countNum.textContent=remaining;animateNum();
-  setStatus(`📸 Foto ${currentShot+1}/3 — berpose dalam ${remaining} detik…`);
+  setStatus(`[Foto ${currentShot+1}/3] berpose dalam ${remaining} detik…`);
   timerInterval=setInterval(()=>{
     remaining--;
     if(remaining<=0){clearInterval(timerInterval);shootPhoto();}
-    else{countNum.textContent=remaining;animateNum();setStatus(`📸 Foto ${currentShot+1}/3 — ${remaining} detik…`);}
+    else{countNum.textContent=remaining;animateNum();setStatus(`[Foto ${currentShot+1}/3] ${remaining} detik…`);}
   },1000);
 }
 function animateNum(){
@@ -1070,7 +1149,7 @@ function shootPhoto(){
     capturedImages.push(url);
     setDotDone(currentShot);currentShot++;
     overlay.classList.remove('active');isRunning=false;
-    if(currentShot<3){setStatus(`✔ Foto ${currentShot} diambil! Bersiap…`);setTimeout(takeNextShot,1500);}
+    if(currentShot<3){setStatus(`✓ Foto ${currentShot} diambil! Bersiap…`);setTimeout(takeNextShot,1500);}
     else finishSession();
   });
 }
@@ -1088,7 +1167,7 @@ function applyCanvasFilter(src,filterStr,cb){
 }
 function finishSession(){
   isRunning=false;overlay.classList.remove('active');clearInterval(timerInterval);
-  resetDots();setStatus('✨ Sesi selesai! Hasil foto siap di bawah.');
+  resetDots();setStatus('★ Sesi selesai! Hasil foto siap di bawah.');
   btnReset.style.display='inline-block';
   populateAllThemes();
   document.getElementById('result-section').classList.add('visible');
@@ -1180,7 +1259,7 @@ function populateTheme(t){
 ══════════════════════════════════ */
 function downloadResult(){
   const btn=document.getElementById('btnDownload');
-  btn.textContent='⏳ Memproses…';btn.disabled=true;
+  btn.textContent='… Memproses';btn.disabled=true;
   const el=document.getElementById('t-'+activeTheme);
   html2canvas(el,{scale:2,useCORS:true,allowTaint:true,logging:false,backgroundColor:null})
   .then(c=>{
@@ -1190,9 +1269,9 @@ function downloadResult(){
     link.download=`GarkevStudio_${activeTheme}_${d.getDate()}${mn[d.getMonth()]}${d.getFullYear()}.jpg`;
     link.href=c.toDataURL('image/jpeg',.95);
     link.click();
-    btn.textContent='✔ Terunduh!';
-    setTimeout(()=>{btn.textContent='⬇ Unduh Foto';btn.disabled=false;},2500);
-  }).catch(err=>{btn.textContent='⚠ Gagal';btn.disabled=false;console.error(err);});
+    btn.textContent='✓ Terunduh!';
+    setTimeout(()=>{btn.textContent='↓ Unduh Foto';btn.disabled=false;},2500);
+  }).catch(err=>{btn.textContent='[!] Gagal';btn.disabled=false;console.error(err);});
 }
 
 /* ══════════════════════════════════
@@ -1228,244 +1307,110 @@ function applyCurrentSize(){
   });
 }
 
+
 /* ══════════════════════════════════
-   QR CODE — Upload ke imgbb → QR mengarah ke URL publik
-   Bisa discan dari HP manapun!
+   WHATSAPP — Unduh foto + buka WA ke nomor tujuan
 ══════════════════════════════════ */
-let qrTimerInterval=null;
 
-// imgbb API key gratis (publik demo key — ganti dengan key Anda dari imgbb.com jika perlu)
-const IMGBB_API_KEY = '2e46288b27a18f1c8871c239a6b64e26';
-
-function openQRModal(){
+function openWAModal(){
   if(capturedImages.length===0){
-    alert('⚠ Belum ada foto. Ambil foto dulu!'); return;
+    alert('[!] Belum ada foto. Ambil foto dulu!'); return;
   }
-  document.getElementById('qr-modal').classList.add('open');
-  document.getElementById('qr-loading').style.display='';
-  document.getElementById('qr-display').style.display='none';
-  document.getElementById('qr-error').style.display='none';
-  document.getElementById('qr-desc').textContent='Mengupload foto ke server… harap tunggu.';
-  generateQR();
-}
-
-function closeQRModal(){
-  document.getElementById('qr-modal').classList.remove('open');
-  if(qrTimerInterval){clearInterval(qrTimerInterval);qrTimerInterval=null;}
-}
-
-document.getElementById('qr-modal').addEventListener('click',function(e){
-  if(e.target===this)closeQRModal();
-});
-
-function regenerateQR(){
-  document.getElementById('qr-loading').style.display='';
-  document.getElementById('qr-display').style.display='none';
-  document.getElementById('qr-error').style.display='none';
-  document.getElementById('qr-desc').textContent='Mengupload foto ke server… harap tunggu.';
-  if(qrTimerInterval){clearInterval(qrTimerInterval);qrTimerInterval=null;}
-  generateQR();
-}
-
-async function generateQR(){
-  try{
-    setQRStatus('🎨 Merender tema foto…');
-
-    // 1. Render tema ke canvas
-    const el=document.getElementById('t-'+activeTheme);
-    const prev=el.style.transform; el.style.transform='none';
-    const cvs=await html2canvas(el,{scale:1.5,useCORS:true,allowTaint:true,logging:false,backgroundColor:'#ffffff'});
-    el.style.transform=prev;
-
-    setQRStatus('🗜️ Mengompres gambar…');
-
-    // 2. Kompres ke JPEG — target < 3MB untuk upload
-    let quality=0.85;
-    let base64Data=cvs.toDataURL('image/jpeg',quality).split(',')[1];
-    while(base64Data.length > 3*1024*1024*1.33 && quality>0.3){
-      quality-=0.08;
-      base64Data=cvs.toDataURL('image/jpeg',quality).split(',')[1];
-    }
-
-    setQRStatus('☁️ Mengupload ke server publik…');
-
-    // 3. Upload ke imgbb.com (free image hosting, URL bisa dibuka dari HP manapun)
-    const formData=new FormData();
-    formData.append('image', base64Data);
-    formData.append('key', IMGBB_API_KEY);
-
-    const d=new Date();
-    const mn=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
-    const tanggal=`${d.getDate()} ${mn[d.getMonth()]} ${d.getFullYear()}`;
-    formData.append('name', `GarkevStudio_${activeTheme}_${tanggal.replace(/ /g,'_')}`);
-
-    let uploadResp;
-    try{
-      const resp=await fetch('https://api.imgbb.com/1/upload',{method:'POST',body:formData});
-      uploadResp=await resp.json();
-    } catch(e){
-      // Jika upload gagal (offline/CORS), fallback ke viewer lokal
-      showFallbackQR(cvs.toDataURL('image/jpeg',0.7), tanggal);
-      return;
-    }
-
-    if(!uploadResp.success){
-      showFallbackQR(cvs.toDataURL('image/jpeg',0.7), tanggal);
-      return;
-    }
-
-    // 4. Dapatkan URL gambar publik
-    const imageURL=uploadResp.data.url;
-    const viewURL=uploadResp.data.url_viewer || imageURL;
-
-    // 5. Buat halaman viewer sederhana menggunakan data: URI agar bisa disimpan
-    // Karena URL imgbb publik, kita buat QR langsung ke URL gambar
-    // Tapi buat juga viewer page yang lebih bagus via URL dengan redirect
-    const viewerPageURL=imageURL; // URL langsung ke gambar JPG di imgbb — bisa dibuka & disimpan dari HP
-
-    setQRStatus('📱 Membuat QR Code…');
-
-    // 6. Load QRCode.js lalu gambar QR
-    await loadQRScript();
-    const qrCanvas=document.getElementById('qr-canvas');
-
-    // Gunakan qrcodejs library
-    qrCanvas.width=0; qrCanvas.height=0; // reset
-    QRCode.toCanvas(qrCanvas, viewerPageURL, {
-      width:240, margin:2,
-      color:{dark:'#1a1410',light:'#ffffff'},
-      errorCorrectionLevel:'M'
-    }, function(err){
-      if(err){showQRError('QR gagal dibuat: '+err.message);return;}
-      document.getElementById('qr-loading').style.display='none';
-      document.getElementById('qr-display').style.display='';
-      document.getElementById('qr-desc').textContent='✅ Scan QR ini dengan kamera HP. Foto akan terbuka di browser dan bisa langsung disimpan ke galeri!';
-      // Simpan link untuk tombol buka
-      document.getElementById('qr-open-link').href=viewerPageURL;
-      document.getElementById('qr-open-link').style.display='inline-block';
-      startQRTimer(3600); // 1 jam
+  // Render tema aktif ke preview
+  const el=document.getElementById('t-'+activeTheme);
+  html2canvas(el,{scale:1,useCORS:true,allowTaint:true,logging:false,backgroundColor:'#ffffff'})
+    .then(cvs=>{
+      document.getElementById('wa-preview-img').src=cvs.toDataURL('image/jpeg',0.7);
     });
 
-  } catch(e){
-    showQRError('Gagal: '+e.message);
-  }
+  document.getElementById('wa-modal').classList.add('open');
+  document.getElementById('wa-nomor').value='';
+  document.getElementById('wa-status').textContent='';
+  document.getElementById('btn-wa-kirim').disabled=false;
+  document.getElementById('btn-wa-kirim').textContent='↓ Unduh & Buka WA';
+  setTimeout(()=>document.getElementById('wa-nomor').focus(),200);
 }
 
-// Fallback jika offline: buat QR ke halaman viewer lokal via data: URI (pendek)
-async function showFallbackQR(imgDataURL, tanggal){
-  setQRStatus('📡 Offline — membuat QR lokal…');
-  await loadQRScript();
+function closeWAModal(){
+  document.getElementById('wa-modal').classList.remove('open');
+}
 
-  // Kompres ulang sangat kecil agar muat di QR
-  const tmpCvs=document.createElement('canvas');
-  tmpCvs.width=800; tmpCvs.height=600;
-  const tmpCtx=tmpCvs.getContext('2d');
-  const img=new Image();
-  img.src=imgDataURL;
-  await new Promise(r=>img.onload=r);
-  tmpCtx.drawImage(img,0,0,800,600);
-  const smallData=tmpCvs.toDataURL('image/jpeg',0.4);
+document.getElementById('wa-modal').addEventListener('click',function(e){
+  if(e.target===this) closeWAModal();
+});
 
-  // Simpan ke IndexedDB agar bisa diakses via hash
-  const key='gkv_'+Date.now();
+// Format nomor WA: hapus spasi/strip, tambah 62 jika diawali 0
+function formatNomorWA(nomor){
+  nomor = nomor.replace(/[\s\-().+]/g,'');
+  if(nomor.startsWith('0')) nomor='62'+nomor.slice(1);
+  return nomor;
+}
+
+async function kirimWA(){
+  const nomorRaw = document.getElementById('wa-nomor').value.trim();
+  if(!nomorRaw){
+    document.getElementById('wa-status').textContent='[!] Masukkan nomor WhatsApp tujuan dulu.';
+    document.getElementById('wa-nomor').focus();
+    return;
+  }
+
+  const nomor = formatNomorWA(nomorRaw);
+  if(!/^62\d{8,14}$/.test(nomor)){
+    document.getElementById('wa-status').textContent='[!] Nomor tidak valid. Contoh: 08123456789';
+    return;
+  }
+
+  const btn = document.getElementById('btn-wa-kirim');
+  btn.disabled=true;
+  btn.textContent='… Memproses';
+  document.getElementById('wa-status').textContent='Merender foto…';
+
   try{
-    const req=indexedDB.open('garkevPhotobox',1);
-    req.onupgradeneeded=e=>e.target.result.createObjectStore('photos');
-    req.onsuccess=function(e){
-      const db=e.target.result;
-      const tx=db.transaction('photos','readwrite');
-      tx.objectStore('photos').put(smallData,key);
-      tx.oncomplete=function(){
-        const viewerURL=window.location.href.split('#')[0]+'#gkv='+key;
-        drawQRCode(viewerURL, '⚠️ Mode offline: HP harus buka file ini di jaringan yang sama atau dari browser yang sama.');
-      };
-    };
-    req.onerror=()=>showQRError('Gagal simpan lokal. Gunakan tombol Unduh Foto sebagai alternatif.');
-  } catch(e){
-    showQRError('Upload gagal & penyimpanan lokal tidak tersedia. Gunakan tombol ⬇ Unduh Foto.');
+    // 1. Render tema ke canvas resolusi penuh
+    const el=document.getElementById('t-'+activeTheme);
+    const prev=el.style.transform; el.style.transform='none';
+    const cvs=await html2canvas(el,{scale:2,useCORS:true,allowTaint:true,logging:false,backgroundColor:'#ffffff'});
+    el.style.transform=prev;
+
+    document.getElementById('wa-status').textContent='↓ Mengunduh foto…';
+
+    // 2. Unduh foto otomatis ke perangkat
+    const d=new Date();
+    const mn=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Ags','Sep','Okt','Nov','Des'];
+    const namaFile=`GarkevStudio_${activeTheme}_${d.getDate()}${mn[d.getMonth()]}${d.getFullYear()}.jpg`;
+
+    const link=document.createElement('a');
+    link.download=namaFile;
+    link.href=cvs.toDataURL('image/jpeg',0.95);
+    link.click();
+
+    document.getElementById('wa-status').textContent='✓ Foto diunduh! Membuka WhatsApp…';
+
+    // 3. Buka WhatsApp ke nomor tujuan dengan pesan otomatis
+    await new Promise(r=>setTimeout(r,800)); // beri jeda agar download mulai
+
+    const pesan=encodeURIComponent(
+      `Halo!\nBerikut foto dari *GarkevStudio Photobox*\n_(cek file yang baru terunduh di galeri/folder Unduhan Anda)_\n\nGresik Kota Baru · Jawa Timur\n@garkevstudio`
+    );
+    const waURL=`https://wa.me/${nomor}?text=${pesan}`;
+    window.open(waURL,'_blank');
+
+    document.getElementById('wa-status').innerHTML=
+      `<span style="color:#25d366;">✓ WhatsApp terbuka!</span><br>`+
+      `<span style="font-size:9px;color:#666;">Di WA: tekan lampiran → pilih foto yang baru terunduh → kirim.</span>`;
+
+    btn.textContent='✓ Selesai';
+    setTimeout(()=>{
+      btn.disabled=false;
+      btn.textContent='↓ Unduh & Buka WA Lagi';
+    },3000);
+
+  }catch(err){
+    document.getElementById('wa-status').textContent='[!] Gagal: '+err.message;
+    btn.disabled=false;
+    btn.textContent='↓ Unduh & Buka WA';
   }
 }
-
-function drawQRCode(url, desc){
-  const qrCanvas=document.getElementById('qr-canvas');
-  qrCanvas.width=0; qrCanvas.height=0;
-  QRCode.toCanvas(qrCanvas, url, {
-    width:240, margin:2,
-    color:{dark:'#1a1410',light:'#ffffff'},
-    errorCorrectionLevel:'M'
-  }, function(err){
-    if(err){showQRError('QR gagal: '+err.message);return;}
-    document.getElementById('qr-loading').style.display='none';
-    document.getElementById('qr-display').style.display='';
-    document.getElementById('qr-desc').textContent=desc;
-    document.getElementById('qr-open-link').style.display='none';
-    startQRTimer(3600);
-  });
-}
-
-function setQRStatus(msg){
-  document.getElementById('qr-loading').innerHTML=`<div style="padding:30px 0;color:#888;font-size:12px;font-style:italic;">${msg}</div>`;
-}
-
-function loadQRScript(){
-  return new Promise((res,rej)=>{
-    if(window.QRCode){res();return;}
-    const s=document.createElement('script');
-    s.src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';
-    s.onload=res; s.onerror=()=>rej(new Error('Gagal load QRCode.js'));
-    document.head.appendChild(s);
-  });
-}
-
-function startQRTimer(seconds){
-  let rem=seconds;
-  const el=document.getElementById('qr-timer');
-  function fmt(s){return Math.floor(s/60)+':'+(s%60<10?'0':'')+s%60;}
-  el.textContent=fmt(rem);
-  qrTimerInterval=setInterval(()=>{
-    rem--;
-    el.textContent=fmt(rem);
-    if(rem<=0){
-      clearInterval(qrTimerInterval);
-      el.textContent='Kedaluwarsa';
-      el.style.color='#e74c3c';
-    }
-  },1000);
-}
-
-function showQRError(msg){
-  document.getElementById('qr-loading').style.display='none';
-  document.getElementById('qr-error').style.display='';
-  document.getElementById('qr-error-msg').textContent='⚠ '+msg;
-}
-
-// Viewer mode: buka foto dari IndexedDB jika ada hash #gkv=
-(function checkViewer(){
-  const hash=window.location.hash;
-  if(!hash.startsWith('#gkv='))return;
-  const key=hash.replace('#gkv=','');
-  const req=indexedDB.open('garkevPhotobox',1);
-  req.onupgradeneeded=e=>e.target.result.createObjectStore('photos');
-  req.onsuccess=function(e){
-    const db=e.target.result;
-    const tx=db.transaction('photos','readonly');
-    const getReq=tx.objectStore('photos').get(key);
-    getReq.onsuccess=function(){
-      const imgData=getReq.result;
-      if(!imgData)return;
-      document.body.style.background='#1a1410';
-      document.body.innerHTML=`<div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;font-family:serif;background:#1a1410;">
-        <div style="max-width:500px;width:100%;text-align:center;">
-          <div style="font-size:26px;color:#f5f0e8;margin-bottom:4px;">GarkevStudio</div>
-          <div style="font-size:9px;color:#666;letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px;">Gresik Kota Baru · Photobox</div>
-          <img src="${imgData}" style="width:100%;border-radius:4px;box-shadow:0 8px 40px rgba(0,0,0,.7);">
-          <div style="margin-top:12px;font-size:10px;color:#555;letter-spacing:.1em;">@garkevstudio</div>
-          <a href="${imgData}" download="GarkevStudio_Foto.jpg" style="display:inline-block;margin-top:14px;padding:10px 24px;background:#c0392b;color:#fff;text-decoration:none;border-radius:3px;font-size:11px;letter-spacing:.1em;">⬇ Simpan Foto</a>
-        </div>
-      </div>`;
-    };
-  };
-})();
 
 // init date labels
 (function(){
