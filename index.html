@@ -1919,10 +1919,44 @@ function getDate(){
 function setImg(id,src,filter){
   const el=document.getElementById(id);if(!el)return;
   el.innerHTML='';
-  const img=document.createElement('img');
-  img.src=src;img.style.width='100%';img.style.height='100%';img.style.objectFit='cover';
-  if(filter)img.style.filter=filter;
-  el.appendChild(img);
+
+  // Gunakan <canvas> agar html2canvas bisa merender crop dengan benar
+  // (html2canvas tidak bisa menerjemahkan object-fit:cover dari CSS)
+  const cvs=document.createElement('canvas');
+  cvs.style.display='block';
+  cvs.style.width='100%';
+  cvs.style.height='100%';
+  if(filter)cvs.style.filter=filter;
+  el.appendChild(cvs);
+
+  const imgObj=new Image();
+  imgObj.onload=function(){
+    const cw=el.offsetWidth||300;
+    const ch=el.offsetHeight||300;
+    cvs.width=cw;
+    cvs.height=ch;
+    const ctx=cvs.getContext('2d');
+
+    // Logika object-fit:cover — crop dari tengah, tidak distorsi
+    const imgRatio=imgObj.naturalWidth/imgObj.naturalHeight;
+    const conRatio=cw/ch;
+    let sx,sy,sw,sh;
+    if(imgRatio>conRatio){
+      // Gambar lebih lebar → crop kiri-kanan, tinggi penuh
+      sh=imgObj.naturalHeight;
+      sw=sh*conRatio;
+      sx=(imgObj.naturalWidth-sw)/2;
+      sy=0;
+    } else {
+      // Gambar lebih tinggi → crop atas-bawah, lebar penuh
+      sw=imgObj.naturalWidth;
+      sh=sw/conRatio;
+      sx=0;
+      sy=(imgObj.naturalHeight-sh)/2;
+    }
+    ctx.drawImage(imgObj,sx,sy,sw,sh,0,0,cw,ch);
+  };
+  imgObj.src=src;
 }
 function addStamp(id,txt){
   const el=document.getElementById(id);if(!el)return;
@@ -2061,10 +2095,15 @@ function downloadResult(){
     fctx.fillStyle='#ffffff';
     fctx.fillRect(0,0,size.w,size.h);
 
-    // Gambar konten di tengah secara vertikal, lebar penuh
-    const contentH=Math.min(c.height, size.h);
-    const yOffset=Math.max(0,Math.floor((size.h-contentH)/2));
-    fctx.drawImage(c, 0, yOffset, size.w, contentH);
+    // Gambar konten dengan object-fit:contain — jaga rasio, tidak gepeng
+    const scaleX = size.w / c.width;
+    const scaleY = size.h / c.height;
+    const scale  = Math.min(scaleX, scaleY);
+    const drawW  = Math.round(c.width  * scale);
+    const drawH  = Math.round(c.height * scale);
+    const drawX  = Math.round((size.w - drawW) / 2);
+    const drawY  = Math.round((size.h - drawH) / 2);
+    fctx.drawImage(c, drawX, drawY, drawW, drawH);
 
     const link=document.createElement('a');
     const d=new Date();
@@ -2145,9 +2184,15 @@ async function kirimWA(){
     finalCanvas.width=size.w;finalCanvas.height=size.h;
     const fctx=finalCanvas.getContext('2d');
     fctx.fillStyle='#ffffff';fctx.fillRect(0,0,size.w,size.h);
-    const contentH=Math.min(cvs.height,size.h);
-    const yOff=Math.max(0,Math.floor((size.h-contentH)/2));
-    fctx.drawImage(cvs,0,yOff,size.w,contentH);
+    // Gambar konten dengan object-fit:contain — jaga rasio, tidak gepeng
+    const scaleX2 = size.w / cvs.width;
+    const scaleY2 = size.h / cvs.height;
+    const scale2  = Math.min(scaleX2, scaleY2);
+    const drawW2  = Math.round(cvs.width  * scale2);
+    const drawH2  = Math.round(cvs.height * scale2);
+    const drawX2  = Math.round((size.w - drawW2) / 2);
+    const drawY2  = Math.round((size.h - drawH2) / 2);
+    fctx.drawImage(cvs, drawX2, drawY2, drawW2, drawH2);
 
     document.getElementById('wa-status').textContent='↓ Mengunduh foto…';
 
