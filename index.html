@@ -144,15 +144,224 @@ body{
 .po-studio{font-family:'UnifrakturMaguntia',cursive;font-size:22px;color:#888;letter-spacing:.08em;}
 .po-sub{font-size:8px;color:#444;letter-spacing:.2em;text-transform:uppercase;margin-top:2px;}
 .po-grid{display:flex;flex-direction:column;gap:10px;}
-.po-photo{width:100%;height:260px;background:#1a1a1a;overflow:hidden;position:relative;border:1px solid #222;}
+.po-photo{width:100%;height:520px;background:#1a1a1a;overflow:hidden;position:relative;border:1px solid #222;}
 .po-photo img{width:100%;height:100%;object-fit:cover;display:block;}
 .po-num{position:absolute;top:8px;left:8px;font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:#555;background:rgba(0,0,0,.6);padding:2px 7px;border:1px solid #333;}
 .po-footer{margin-top:12px;border-top:1px solid #2a2a2a;padding-top:8px;display:flex;justify-content:space-between;align-items:center;font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:#444;}
 .po-footer-mid{font-family:'UnifrakturMaguntia',cursive;font-size:16px;color:#555;letter-spacing:.06em;text-transform:none;}
 
 /* ════════════════════════════════════════════════════════
-   TEMA 1 – KORAN (newspaper)
+   TEMA KORAN: BANDAR GRISSE
+   Layout: Headline tengah besar, lalu foto utama kiri besar + kolom teks kanan
 ════════════════════════════════════════════════════════ */
+#t-bandargrisse{
+  width:700px;background:#f2ead8;color:#1a1208;
+  padding:18px 22px 24px;border:3px double #1a1208;
+  font-family:'Libre Baskerville',serif;position:relative;
+}
+#t-bandargrisse::before{
+  content:'';position:absolute;inset:6px;border:1px solid #1a1208;pointer-events:none;
+}
+#t-bandargrisse>*{position:relative;z-index:1;}
+.bg-top{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #1a1208;padding-bottom:4px;margin-bottom:4px;font-size:8.5px;font-family:'IM Fell English',serif;font-style:italic;}
+.bg-mastname{font-family:'UnifrakturMaguntia',cursive;font-size:44px;text-align:center;line-height:1;letter-spacing:.02em;color:#1a1208;padding:4px 0 2px;}
+.bg-sub{font-size:8px;text-align:center;letter-spacing:.18em;text-transform:uppercase;border-top:1px solid #1a1208;border-bottom:2px solid #1a1208;padding:3px;margin-bottom:8px;background:#1a1208;color:#f2ead8;}
+.bg-headline{font-family:'Playfair Display',serif;font-size:52px;font-weight:900;text-align:center;text-transform:uppercase;line-height:.95;margin-bottom:8px;border-bottom:2px solid #1a1208;padding-bottom:8px;}
+/* Split layout: foto kiri 60%, kolom teks kanan 40% */
+.bg-split{display:grid;grid-template-columns:3fr 2fr;gap:0;border:1.5px solid #1a1208;margin-bottom:10px;}
+.bg-photo-main{width:100%;height:420px;background:#ddd;border-right:1.5px solid #1a1208;overflow:hidden;position:relative;}
+.bg-photo-main img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(20%) contrast(1.05);}
+/* Kolom kanan dari split */
+.bg-right-stack{display:flex;flex-direction:column;}
+.bg-photo-sm{width:100%;height:210px;background:#ede7d5;border:none;border-bottom:1px solid #1a1208;overflow:hidden;position:relative;}
+.bg-photo-sm img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(20%) contrast(1.05);}
+.bg-center-box{flex:1;border:none;padding:8px;text-align:center;background:rgba(255,255,255,.3);display:flex;flex-direction:column;justify-content:center;}
+.bg-center-box .bc-name{font-family:'UnifrakturMaguntia',cursive;font-size:22px;line-height:1;margin-bottom:3px;}
+.bg-center-box p{font-size:7px;color:#5a4030;line-height:1.5;}
+/* Baris kolom teks 3-kolom bawah */
+.bg-cols{display:grid;grid-template-columns:1fr 1.2fr 1fr;border:1px solid #1a1208;margin-bottom:8px;}
+.bg-col{padding:7px 9px;border-right:1px solid #1a1208;font-size:7.8px;line-height:1.55;text-align:justify;}
+.bg-col:last-child{border-right:none;}
+.bg-footer{border-top:3px double #1a1208;padding-top:4px;display:flex;justify-content:space-between;font-size:7.5px;letter-spacing:.1em;text-transform:uppercase;color:#4a4030;}
+
+/* ════════════════════════════════════════════════════════
+   TEMA KORAN: ALUN-ALUN GRESIK
+   Layout: Foto utama penuh lebar, lalu 2 foto kecil horizontal + teks di bawah
+════════════════════════════════════════════════════════ */
+#t-alunalun{
+  width:700px;background:#faf5ec;color:#18140a;
+  padding:18px 22px 24px;border:2px solid #18140a;
+  font-family:'Libre Baskerville',serif;position:relative;
+}
+#t-alunalun::before{
+  content:'';position:absolute;inset:0;opacity:.3;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23faf5ec'/%3E%3Crect width='1' height='1' fill='%23d8caa4' opacity='.6'/%3E%3C/svg%3E");
+}
+#t-alunalun>*{position:relative;z-index:1;}
+.aa-ornament-bar{text-align:center;font-size:13px;letter-spacing:.3em;color:#8a6a30;border-top:2px solid #18140a;border-bottom:1px solid #18140a;padding:3px 0;margin-bottom:3px;}
+.aa-mastname{font-family:'UnifrakturMaguntia',cursive;font-size:42px;text-align:center;line-height:1;color:#18140a;padding:4px 0 2px;}
+.aa-kicker{display:flex;justify-content:space-between;font-size:8px;border-top:1px solid #18140a;border-bottom:3px double #18140a;padding:3px 5px;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase;}
+/* Headline kecil, italic, di kiri — majalah style */
+.aa-headline-row{display:flex;align-items:flex-end;gap:10px;margin-bottom:8px;padding-bottom:8px;border-bottom:2px solid #18140a;}
+.aa-headline{font-family:'Playfair Display',serif;font-size:56px;font-weight:900;line-height:.92;font-style:italic;flex:1;}
+.aa-headline-aside{width:160px;flex-shrink:0;font-size:7.8px;line-height:1.6;text-align:justify;color:#4a4020;padding-left:10px;border-left:1px solid #18140a;}
+/* Foto utama lebar penuh */
+.aa-photo-main{width:100%;height:380px;border:1.5px solid #18140a;overflow:hidden;margin-bottom:0;position:relative;}
+.aa-photo-main img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(15%) contrast(1.08);}
+/* Foto caption bar */
+.aa-caption-bar{background:#18140a;color:#faf5ec;font-size:7.5px;font-style:italic;padding:3px 10px;letter-spacing:.05em;margin-bottom:8px;}
+/* Dua foto kecil horisontal */
+.aa-photo-strip{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid #18140a;margin-bottom:8px;}
+.aa-photo-sm{height:150px;background:#ede7d5;overflow:hidden;position:relative;border-right:1px solid #18140a;}
+.aa-photo-sm:last-child{border-right:none;}
+.aa-photo-sm img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(15%) contrast(1.05);}
+/* Label nomor foto */
+.aa-photo-sm-num{position:absolute;bottom:4px;right:6px;font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:rgba(24,20,10,.25);}
+/* Kolom teks tunggal dengan kotak studio */
+.aa-cols{display:grid;grid-template-columns:1fr 1fr 1fr;border:1px solid #18140a;}
+.aa-col{padding:7px 9px;border-right:1px solid #18140a;font-size:7.8px;line-height:1.55;text-align:justify;}
+.aa-col:last-child{border-right:none;}
+.aa-center-box{border:1px solid #18140a;padding:7px;text-align:center;background:rgba(255,255,255,.35);}
+.aa-center-box .ac-name{font-family:'UnifrakturMaguntia',cursive;font-size:20px;line-height:1;margin-bottom:2px;}
+.aa-center-box p{font-size:7px;color:#5a4820;line-height:1.5;}
+.aa-footer{margin-top:8px;border-top:3px double #18140a;padding-top:4px;display:flex;justify-content:space-between;font-size:7.5px;letter-spacing:.1em;text-transform:uppercase;color:#4a4020;}
+
+/* ════════════════════════════════════════════════════════
+   TEMA KORAN: YOGYAKARTA
+   Layout: Foto besar kiri + kolom teks & 2 foto kecil kanan (asimetris)
+════════════════════════════════════════════════════════ */
+#t-yogya{
+  width:700px;background:#f8f2e4;color:#15100a;
+  padding:18px 22px 24px;border:2px solid #15100a;
+  font-family:'Libre Baskerville',serif;position:relative;
+}
+#t-yogya::before{content:'';position:absolute;inset:0;opacity:.25;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23f8f2e4'/%3E%3Crect width='1' height='1' fill='%23c8b880' opacity='.4'/%3E%3C/svg%3E");}
+#t-yogya>*{position:relative;z-index:1;}
+.yo-header-strip{display:flex;justify-content:space-between;align-items:center;font-size:8px;font-family:'IM Fell English',serif;font-style:italic;border-top:3px solid #15100a;border-bottom:1px solid #15100a;padding:3px 6px;margin-bottom:2px;}
+.yo-mastname{font-family:'UnifrakturMaguntia',cursive;font-size:42px;text-align:center;line-height:1;color:#15100a;padding:3px 0 2px;}
+.yo-tagline{font-size:8px;text-align:center;letter-spacing:.14em;text-transform:uppercase;color:#8a6820;margin-bottom:3px;}
+.yo-kicker{display:flex;justify-content:space-between;font-size:8px;background:#15100a;color:#f8f2e4;padding:3px 6px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+/* Headline besar italic center */
+.yo-headline{font-family:'Playfair Display',serif;font-size:56px;font-weight:900;text-align:center;text-transform:uppercase;line-height:.92;margin-bottom:8px;border-bottom:2px solid #15100a;padding-bottom:8px;font-style:italic;}
+/* Asimetris: foto besar kiri (58%) + kolom kanan (42%) */
+.yo-main-split{display:grid;grid-template-columns:7fr 5fr;gap:0;border:1.5px solid #15100a;margin-bottom:8px;}
+.yo-photo-main{height:440px;background:#ddd;overflow:hidden;border-right:1.5px solid #15100a;position:relative;}
+.yo-photo-main img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(18%) contrast(1.06);}
+/* Kolom kanan: teks atas + 2 foto kecil */
+.yo-right-panel{display:flex;flex-direction:column;}
+.yo-right-text{padding:8px 10px;font-size:7.5px;line-height:1.65;text-align:justify;border-bottom:1px solid #15100a;flex:1;}
+.yo-right-text strong{font-size:8.5px;display:block;text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid #ccc;padding-bottom:3px;margin-bottom:5px;}
+.yo-photo-sm{width:100%;height:145px;overflow:hidden;border-top:1px solid #15100a;position:relative;}
+.yo-photo-sm img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(18%) contrast(1.05);}
+/* Bar label foto */
+.yo-photo-sm-label{position:absolute;bottom:0;left:0;right:0;background:rgba(21,16,10,.5);color:#f8f2e4;font-size:7px;padding:2px 6px;letter-spacing:.1em;text-transform:uppercase;}
+/* Baris kolom 3 teks bawah */
+.yo-cols{display:grid;grid-template-columns:1fr 1fr 1fr;border:1px solid #15100a;}
+.yo-col{padding:7px 9px;border-right:1px solid #15100a;font-size:7.8px;line-height:1.55;text-align:justify;}
+.yo-col:last-child{border-right:none;}
+.yo-center-box{border:1px dashed #15100a;padding:7px;text-align:center;background:rgba(255,255,255,.3);}
+.yo-center-box .yc-name{font-family:'UnifrakturMaguntia',cursive;font-size:20px;line-height:1;}
+.yo-center-box p{font-size:7px;color:#5a4820;line-height:1.5;}
+.yo-footer{margin-top:8px;border-top:3px double #15100a;padding-top:4px;display:flex;justify-content:space-between;font-size:7.5px;letter-spacing:.1em;text-transform:uppercase;color:#5a4820;}
+
+/* ════════════════════════════════════════════════════════
+   TEMA KORAN: SURABAYA
+   Layout: Headline bold besar, lalu 3 foto strip horisontal sejajar
+════════════════════════════════════════════════════════ */
+#t-surabaya{
+  width:700px;background:#f0ebe0;color:#100c06;
+  padding:18px 22px 24px;border:3px solid #100c06;
+  font-family:'Libre Baskerville',serif;position:relative;
+}
+#t-surabaya::before{content:'';position:absolute;inset:0;opacity:.25;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23f0ebe0'/%3E%3Crect width='1' height='1' fill='%23b8a870' opacity='.4'/%3E%3C/svg%3E");}
+#t-surabaya>*{position:relative;z-index:1;}
+.su-topbar{display:flex;justify-content:space-between;align-items:center;border-bottom:4px solid #100c06;padding-bottom:3px;margin-bottom:2px;font-size:8px;font-family:'IM Fell English',serif;font-style:italic;}
+.su-mastname{font-family:'UnifrakturMaguntia',cursive;font-size:46px;text-align:center;line-height:1;color:#100c06;padding:4px 0 2px;}
+.su-kicker{display:flex;justify-content:space-between;font-size:8px;background:#100c06;color:#f0ebe0;padding:3px 6px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+/* Headline + deck: headline kiri besar, deck kanan kecil */
+.su-headline-block{display:grid;grid-template-columns:2fr 1fr;gap:12px;align-items:end;margin-bottom:8px;padding-bottom:8px;border-bottom:2px solid #100c06;}
+.su-headline{font-family:'Playfair Display',serif;font-size:64px;font-weight:900;text-transform:uppercase;line-height:.88;}
+.su-headline-deck{font-size:7.8px;line-height:1.65;text-align:justify;color:#50401a;padding-left:10px;border-left:1px solid #100c06;}
+/* Strip 3 foto sejajar, tinggi besar */
+.su-photo-strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:1.5px solid #100c06;margin-bottom:10px;}
+.su-photo-main{height:360px;background:#ddd;overflow:hidden;border-right:1.5px solid #100c06;position:relative;}
+.su-photo-main:last-child{border-right:none;}
+.su-photo-main img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(12%) contrast(1.08);}
+/* Nomor di pojok bawah */
+.su-photo-num{position:absolute;bottom:0;left:0;right:0;background:rgba(16,12,6,.55);color:#f0ebe0;font-family:'Playfair Display',serif;font-size:11px;font-weight:700;padding:3px 8px;letter-spacing:.08em;text-transform:uppercase;}
+/* Kolom teks 3 bawah */
+.su-cols{display:grid;grid-template-columns:1fr 1fr 1fr;border:1px solid #100c06;}
+.su-col{padding:7px 9px;border-right:1px solid #100c06;font-size:7.8px;line-height:1.55;text-align:justify;}
+.su-col:last-child{border-right:none;}
+.su-photo-sm{width:100%;height:140px;overflow:hidden;border:1px solid #100c06;margin-bottom:5px;}
+.su-photo-sm img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(12%) contrast(1.05);}
+.su-center-box{border:1px solid #100c06;padding:7px;text-align:center;background:rgba(255,255,255,.3);}
+.su-center-box .sc-name{font-family:'UnifrakturMaguntia',cursive;font-size:20px;line-height:1;}
+.su-center-box p{font-size:7px;color:#50401a;line-height:1.5;}
+.su-footer{margin-top:8px;border-top:4px double #100c06;padding-top:4px;display:flex;justify-content:space-between;font-size:7.5px;letter-spacing:.1em;text-transform:uppercase;color:#50401a;}
+
+/* ════════════════════════════════════════════════════════
+   TEMA KORAN: BANDUNG
+   Layout: Mosaic — foto besar kiri atas + foto kecil kanan atas + foto lebar bawah
+════════════════════════════════════════════════════════ */
+#t-bandung{
+  width:700px;background:#eff0e8;color:#0e120a;
+  padding:18px 22px 24px;border:2px solid #0e120a;
+  font-family:'Libre Baskerville',serif;position:relative;
+}
+#t-bandung::before{content:'';position:absolute;inset:0;opacity:.25;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23eff0e8'/%3E%3Crect width='1' height='1' fill='%23a8b890' opacity='.4'/%3E%3C/svg%3E");}
+#t-bandung>*{position:relative;z-index:1;}
+.bd-header{display:flex;justify-content:space-between;align-items:center;font-size:8px;font-family:'IM Fell English',serif;font-style:italic;border-top:3px solid #0e120a;border-bottom:1px solid #0e120a;padding:3px 6px;margin-bottom:2px;}
+.bd-mastname{font-family:'UnifrakturMaguntia',cursive;font-size:42px;text-align:center;line-height:1;color:#0e120a;padding:3px 0 2px;}
+.bd-sub{font-size:8px;text-align:center;letter-spacing:.16em;text-transform:uppercase;color:#4a5828;margin-bottom:3px;font-style:italic;font-family:'IM Fell English',serif;}
+.bd-kicker{display:flex;justify-content:space-between;font-size:8px;background:#0e120a;color:#eff0e8;padding:3px 6px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+/* Headline dengan ornamen sisi */
+.bd-headline-wrap{display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-bottom:8px;border-bottom:2px solid #0e120a;}
+.bd-headline-orn{font-size:28px;color:#4a5828;opacity:.6;flex-shrink:0;}
+.bd-headline{font-family:'Playfair Display',serif;font-size:54px;font-weight:900;text-align:center;text-transform:uppercase;line-height:.92;flex:1;}
+/* Mosaic grid: baris atas (foto besar kiri + teks+foto kanan), baris bawah foto lebar */
+.bd-mosaic-top{display:grid;grid-template-columns:3fr 2fr;gap:0;border:1.5px solid #0e120a;margin-bottom:0;}
+.bd-photo-main{height:340px;background:#ddd;overflow:hidden;border-right:1.5px solid #0e120a;position:relative;}
+.bd-photo-main img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(10%) contrast(1.06);}
+/* Kanan atas: studio box + foto kecil */
+.bd-right-top{display:flex;flex-direction:column;}
+.bd-center-box{flex:1;border:none;border-bottom:1px solid #0e120a;padding:8px;text-align:center;background:rgba(255,255,255,.3);display:flex;flex-direction:column;justify-content:center;}
+.bd-center-box .bc2-name{font-family:'UnifrakturMaguntia',cursive;font-size:20px;line-height:1;margin-bottom:2px;}
+.bd-center-box p{font-size:7px;color:#3a4818;line-height:1.5;}
+.bd-photo-sm-top{height:160px;background:#ddd;overflow:hidden;position:relative;}
+.bd-photo-sm-top img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(10%) contrast(1.05);}
+/* Baris bawah: foto lebar penuh */
+.bd-mosaic-bottom{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid #0e120a;border-top:none;margin-bottom:8px;}
+.bd-photo-sm{height:130px;background:#ddd;overflow:hidden;border-right:1.5px solid #0e120a;position:relative;}
+.bd-photo-sm:last-child{border-right:none;}
+.bd-photo-sm img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(10%) contrast(1.05);}
+.bd-photo-sm-label{position:absolute;bottom:0;left:0;right:0;background:rgba(14,18,10,.5);color:#eff0e8;font-size:7px;padding:2px 6px;letter-spacing:.1em;text-transform:uppercase;}
+/* Kolom teks 3 */
+.bd-cols{display:grid;grid-template-columns:1fr 1fr 1fr;border:1px solid #0e120a;}
+.bd-col{padding:7px 9px;border-right:1px solid #0e120a;font-size:7.8px;line-height:1.55;text-align:justify;}
+.bd-col:last-child{border-right:none;}
+.bd-footer{margin-top:8px;border-top:3px double #0e120a;padding-top:4px;display:flex;justify-content:space-between;font-size:7.5px;letter-spacing:.1em;text-transform:uppercase;color:#3a4818;}
+
+/* ════ MID-BAR for koran themes ════ */
+.koran-mid{display:flex;align-items:stretch;margin-bottom:10px;}
+.koran-mid.bg-style{border-top:2px solid #1a1208;border-bottom:1.5px solid #1a1208;}
+.koran-mid.aa-style{border-top:2px solid #18140a;border-bottom:1.5px solid #18140a;}
+.koran-mid.yo-style{border-top:2px solid #15100a;border-bottom:1.5px solid #15100a;}
+.koran-mid.su-style{border-top:2px solid #100c06;border-bottom:1.5px solid #100c06;}
+.koran-mid.bd-style{border-top:2px solid #0e120a;border-bottom:1.5px solid #0e120a;}
+.koran-mid-title{flex:1;padding:5px 10px;font-family:'Playfair Display',serif;font-size:13px;font-weight:700;line-height:1.25;}
+.koran-mid-tag{padding:5px 10px;display:flex;align-items:center;justify-content:center;min-width:115px;}
+.koran-mid-tag span{font-family:'Playfair Display',serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 8px;text-align:center;line-height:1.3;}
+.koran-mid.bg-style .koran-mid-title{border-right:1.5px solid #1a1208;}
+.koran-mid.bg-style .koran-mid-tag span{border:2px solid #1a1208;}
+.koran-mid.aa-style .koran-mid-title{border-right:1.5px solid #18140a;}
+.koran-mid.aa-style .koran-mid-tag span{border:2px solid #18140a;}
+.koran-mid.yo-style .koran-mid-title{border-right:1.5px solid #15100a;}
+.koran-mid.yo-style .koran-mid-tag span{border:2px solid #15100a;}
+.koran-mid.su-style .koran-mid-title{border-right:1.5px solid #100c06;}
+.koran-mid.su-style .koran-mid-tag span{border:2px solid #100c06;}
+.koran-mid.bd-style .koran-mid-title{border-right:1.5px solid #0e120a;}
+.koran-mid.bd-style .koran-mid-tag span{border:2px solid #0e120a;}
 #t-newspaper{
   width:700px;background:#f5f0e8;color:#1a1410;
   padding:18px 22px 24px;border:2px solid #1a1410;
@@ -408,14 +617,14 @@ body{
 .sp-content{padding:10px 12px;}
 .sp-headline{font-family:'Anton',sans-serif;font-size:52px;line-height:.92;text-transform:uppercase;color:#111;margin-bottom:6px;border-bottom:3px solid #cc0000;padding-bottom:6px;}
 .sp-headline span{color:#cc0000;}
-.sp-main-photo{width:100%;height:280px;background:#ddd;overflow:hidden;border:2px solid #111;margin-bottom:10px;position:relative;}
+.sp-main-photo{width:100%;height:400px;background:#ddd;overflow:hidden;border:2px solid #111;margin-bottom:10px;position:relative;}
 .sp-main-photo img{width:100%;height:100%;object-fit:cover;display:block;}
 .sp-photo-tag{position:absolute;top:0;left:0;background:#cc0000;color:#fff;font-family:'Anton',sans-serif;font-size:11px;padding:3px 10px;letter-spacing:.08em;}
 .sp-cols{display:grid;grid-template-columns:2fr 1fr;gap:10px;margin-bottom:10px;}
 .sp-text-col{font-size:8px;line-height:1.6;text-align:justify;}
 .sp-text-col p+p{margin-top:5px;}
 .sp-side-col{display:flex;flex-direction:column;gap:8px;}
-.sp-sm-photo{height:108px;background:#ddd;overflow:hidden;border:1.5px solid #111;position:relative;}
+.sp-sm-photo{height:150px;background:#ddd;overflow:hidden;border:1.5px solid #111;position:relative;}
 .sp-sm-photo img{width:100%;height:100%;object-fit:cover;display:block;}
 .sp-sm-photo .sp-sm-num{position:absolute;bottom:0;right:0;background:#cc0000;color:#fff;font-family:'Anton',sans-serif;font-size:14px;padding:2px 6px;line-height:1;}
 .sp-scorecard{background:#111;color:#fff;padding:8px;text-align:center;flex:1;}
@@ -427,6 +636,7 @@ body{
 
 /* ════════════════════════════════════════════════════════
    TEMA 7 – KORAN RETRO TELEGRAM
+   Layout: Asimetris — kolom kiri teks+kecil, kolom kanan foto besar vertikal
 ════════════════════════════════════════════════════════ */
 #t-telegram{
   width:700px;background:#fffdf8;color:#0a0a0a;
@@ -436,31 +646,175 @@ body{
   position:relative;
 }
 .tg-border-inner{position:absolute;inset:7px;border:1px solid #0a0a0a;pointer-events:none;}
-.tg-header{text-align:center;border-bottom:3px solid #0a0a0a;padding-bottom:6px;margin-bottom:6px;}
+.tg-header{border-bottom:3px solid #0a0a0a;padding-bottom:6px;margin-bottom:6px;}
 .tg-vol-line{display:flex;justify-content:space-between;font-size:8px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid #0a0a0a;border-top:1px solid #0a0a0a;padding:2px 6px;margin-bottom:4px;}
 .tg-mastname{font-family:'Playfair Display',serif;font-size:50px;font-weight:900;line-height:1;text-align:center;text-transform:uppercase;letter-spacing:-.01em;}
 .tg-sub-strip{background:#0a0a0a;color:#fffdf8;text-align:center;padding:3px 8px;font-size:9px;letter-spacing:.22em;text-transform:uppercase;margin:4px 0;}
-.tg-headline-wrap{border:2px solid #0a0a0a;padding:6px 8px;margin-bottom:8px;text-align:center;}
+/* Headline bar bawah masthead — lebar penuh */
+.tg-headline-bar{display:flex;align-items:stretch;border:2px solid #0a0a0a;margin-bottom:10px;}
+.tg-headline-eyebrow{writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg);font-size:8px;letter-spacing:.18em;text-transform:uppercase;background:#0a0a0a;color:#fffdf8;padding:6px 5px;flex-shrink:0;}
+.tg-headline-inner{flex:1;padding:6px 10px;text-align:center;}
 .tg-headline-top{font-size:9px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid #0a0a0a;padding-bottom:3px;margin-bottom:4px;}
 .tg-headline-main{font-family:'Playfair Display',serif;font-size:46px;font-weight:900;line-height:.95;text-transform:uppercase;}
-.tg-headline-deck{font-size:12px;font-style:italic;color:#3a3a3a;margin-top:4px;border-top:1px solid #ccc;padding-top:3px;}
-.tg-body{display:grid;grid-template-columns:1fr 2fr 1fr;gap:0;border:1px solid #0a0a0a;margin-bottom:8px;}
-.tg-side{border-right:1px solid #0a0a0a;padding:8px;font-size:7.5px;line-height:1.65;text-align:justify;}
-.tg-side:last-child{border-right:none;border-left:1px solid #0a0a0a;}
-.tg-center-col{padding:0;}
-.tg-main-photo{width:100%;height:240px;background:#ddd;overflow:hidden;border-bottom:1px solid #0a0a0a;position:relative;}
+.tg-headline-deck{font-size:11px;font-style:italic;color:#3a3a3a;margin-top:4px;border-top:1px solid #ccc;padding-top:3px;}
+/* Body: asimetris 2 kolom */
+.tg-body{display:grid;grid-template-columns:2fr 1fr;gap:0;border:1px solid #0a0a0a;margin-bottom:8px;}
+.tg-left-col{border-right:1px solid #0a0a0a;}
+.tg-main-photo{width:100%;height:380px;background:#ddd;overflow:hidden;border-bottom:1px solid #0a0a0a;position:relative;}
 .tg-main-photo img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(30%) contrast(1.1);}
 .tg-photo-caption{padding:4px 8px;font-size:7.5px;font-style:italic;color:#555;border-bottom:1px solid #ccc;text-align:center;}
+.tg-left-text{padding:7px 9px;font-size:7.5px;line-height:1.65;text-align:justify;}
+/* Kolom kanan: foto kecil vertikal susun */
+.tg-right-col{display:flex;flex-direction:column;}
+.tg-photo-cell{flex:1;background:#ddd;overflow:hidden;border-bottom:1px solid #0a0a0a;position:relative;min-height:100px;}
+.tg-photo-cell:last-child{border-bottom:none;}
+.tg-photo-cell img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(20%) contrast(1.05);}
+.tg-photo-cell .tg-cell-num{position:absolute;top:4px;left:4px;font-family:'Playfair Display',serif;font-weight:700;font-size:11px;background:#fffdf8;border:1px solid #0a0a0a;padding:1px 5px;}
 .tg-center-ad{background:#f0ece0;padding:8px;text-align:center;border-top:1px solid #0a0a0a;}
 .tg-center-ad .ca-orn{font-size:18px;color:#0a0a0a;opacity:.4;margin-bottom:2px;}
 .tg-center-ad .ca-name{font-family:'UnifrakturMaguntia',cursive;font-size:24px;line-height:1;}
 .tg-center-ad .ca-sub{font-size:7px;letter-spacing:.18em;text-transform:uppercase;color:#555;margin-top:2px;}
-.tg-photo-row{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid #0a0a0a;margin-bottom:8px;}
-.tg-photo-cell{height:120px;background:#ddd;overflow:hidden;border-right:1px solid #0a0a0a;position:relative;}
-.tg-photo-cell:last-child{border-right:none;}
-.tg-photo-cell img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(20%) contrast(1.05);}
-.tg-photo-cell .tg-cell-num{position:absolute;top:4px;left:4px;font-family:'Playfair Display',serif;font-weight:700;font-size:11px;background:#fffdf8;border:1px solid #0a0a0a;padding:1px 5px;}
 .tg-footer{border-top:3px double #0a0a0a;padding-top:5px;display:flex;justify-content:space-between;font-size:7.5px;letter-spacing:.1em;text-transform:uppercase;color:#555;}
+
+/* ════════════════════════════════════════════════════════
+   TEMA KORAN: ABOUT YOU 💌
+   Layout: Surat cinta vintage — masthead romantis, foto utama kiri besar,
+   kolom kanan puisi + foto kecil, lalu 2 foto strip bawah dengan caption mesra
+════════════════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
+
+#t-aboutyou{
+  width:700px;
+  background:#fdf6f0;
+  color:#1a0a0a;
+  padding:20px 24px 26px;
+  border:2px solid #5a1a1a;
+  font-family:'Libre Baskerville',serif;
+  position:relative;
+}
+/* Pola kertas surat lembut */
+#t-aboutyou::before{
+  content:'';position:absolute;inset:0;opacity:.18;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23fdf6f0'/%3E%3Crect width='1' height='1' fill='%23c8826a' opacity='.5'/%3E%3C/svg%3E");
+}
+/* Border ganda dalam */
+#t-aboutyou::after{
+  content:'';position:absolute;inset:8px;border:1px solid rgba(90,26,26,.3);pointer-events:none;
+}
+#t-aboutyou>*{position:relative;z-index:1;}
+
+/* Ornamen hati di sudut */
+.ay-heart-tl,.ay-heart-tr,.ay-heart-bl,.ay-heart-br{
+  position:absolute;font-size:20px;color:#c8826a;opacity:.45;line-height:1;z-index:2;
+}
+.ay-heart-tl{top:14px;left:14px;}
+.ay-heart-tr{top:14px;right:14px;}
+.ay-heart-bl{bottom:14px;left:14px;}
+.ay-heart-br{bottom:14px;right:14px;}
+
+/* Top bar: tanggal & vol */
+.ay-topbar{
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:3px solid #5a1a1a;border-bottom:1px solid #5a1a1a;
+  padding:3px 6px;margin-bottom:3px;
+  font-size:8px;font-family:'IM Fell English',serif;font-style:italic;color:#5a1a1a;
+}
+/* Masthead */
+.ay-mastname{
+  font-family:'UnifrakturMaguntia',cursive;
+  font-size:46px;text-align:center;line-height:1;
+  color:#5a1a1a;padding:4px 0 2px;letter-spacing:.03em;
+}
+/* Sub tagline */
+.ay-sub{
+  font-size:8px;text-align:center;letter-spacing:.2em;text-transform:uppercase;
+  background:#5a1a1a;color:#fdf6f0;padding:3px;margin-bottom:8px;
+}
+/* Headline romantis besar italic */
+.ay-headline{
+  font-family:'Cormorant Garamond',serif;
+  font-size:62px;font-weight:600;font-style:italic;
+  text-align:center;line-height:.92;
+  color:#5a1a1a;margin-bottom:6px;
+  border-bottom:2px solid #5a1a1a;padding-bottom:8px;
+}
+.ay-headline em{font-style:normal;font-weight:300;font-size:.65em;display:block;letter-spacing:.18em;text-transform:uppercase;color:#8a3a2a;margin-bottom:2px;}
+
+/* Body asimetris: foto besar kiri + kolom puisi kanan */
+.ay-body{display:grid;grid-template-columns:3fr 2fr;gap:0;border:1.5px solid #5a1a1a;margin-bottom:0;}
+.ay-photo-main{height:410px;background:#ddd;overflow:hidden;border-right:1.5px solid #5a1a1a;position:relative;}
+.ay-photo-main img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(25%) contrast(1.05) brightness(.98);}
+/* Overlay gradient romantis */
+.ay-photo-main::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(90,26,26,.08) 0%,transparent 60%);
+  pointer-events:none;
+}
+/* Kolom kanan: kutipan + foto kecil */
+.ay-right-col{display:flex;flex-direction:column;}
+.ay-quote-box{
+  flex:1;padding:12px 12px 8px;
+  display:flex;flex-direction:column;justify-content:center;
+  background:rgba(200,130,106,.07);
+  border-bottom:1px solid rgba(90,26,26,.3);
+}
+.ay-quote-mark{font-family:'Cormorant Garamond',serif;font-size:48px;color:#c8826a;line-height:.6;margin-bottom:4px;opacity:.5;}
+.ay-quote-text{
+  font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;
+  line-height:1.7;color:#3a1010;text-align:center;
+}
+.ay-quote-attr{font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:#8a3a2a;text-align:right;margin-top:6px;}
+.ay-photo-sm-right{
+  height:175px;background:#ddd;overflow:hidden;position:relative;
+}
+.ay-photo-sm-right img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(30%) contrast(1.05);}
+.ay-photo-sm-right-label{
+  position:absolute;bottom:0;left:0;right:0;
+  background:rgba(90,26,26,.55);color:#fdf6f0;
+  font-family:'IM Fell English',serif;font-style:italic;
+  font-size:8px;padding:3px 8px;letter-spacing:.06em;text-align:center;
+}
+
+/* Mid bar */
+.ay-mid{
+  display:flex;align-items:stretch;
+  border-left:1.5px solid #5a1a1a;border-right:1.5px solid #5a1a1a;
+  border-bottom:1.5px solid #5a1a1a;margin-bottom:8px;
+}
+.ay-mid-title{
+  flex:1;padding:6px 12px;
+  font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;font-style:italic;
+  line-height:1.3;border-right:1.5px solid #5a1a1a;color:#5a1a1a;
+}
+.ay-mid-studio{
+  padding:6px 12px;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;text-align:center;min-width:140px;
+  background:rgba(90,26,26,.04);
+}
+.ay-mid-studio .ay-studio-name{
+  font-family:'UnifrakturMaguntia',cursive;font-size:20px;line-height:1;color:#5a1a1a;
+}
+.ay-mid-studio .ay-studio-sub{font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:#8a3a2a;margin-top:2px;}
+
+/* Strip 2 foto bawah */
+.ay-photo-strip{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1.5px solid #5a1a1a;border-top:none;margin-bottom:8px;}
+.ay-photo-sm{height:150px;background:#ddd;overflow:hidden;position:relative;border-right:1.5px solid #5a1a1a;}
+.ay-photo-sm:last-child{border-right:none;}
+.ay-photo-sm img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(22%) contrast(1.05);}
+.ay-photo-sm-caption{
+  position:absolute;bottom:0;left:0;right:0;
+  background:rgba(90,26,26,.52);color:#fdf6f0;
+  font-family:'IM Fell English',serif;font-style:italic;
+  font-size:8.5px;padding:4px 10px;letter-spacing:.04em;text-align:center;
+}
+
+/* Footer */
+.ay-footer{
+  border-top:3px double #5a1a1a;padding-top:5px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:7.5px;letter-spacing:.1em;text-transform:uppercase;color:#5a1a1a;
+}
+.ay-footer-heart{font-size:14px;color:#c8826a;}
 
 /* ════════════════════════════════════════════════════════
    EMPTY PLACEHOLDERS (all themes)
@@ -577,20 +931,20 @@ body{
 
 <!-- ══════════ THEME PICKER ══════════ -->
 <div class="theme-picker">
-  <button class="theme-btn active" onclick="setTheme('polosan',this)">
-    <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" style="vertical-align:-2px;margin-right:5px">
-      <rect x="1" y="1" width="14" height="14" rx="1.5"/>
-      <line x1="4" y1="8" x2="12" y2="8" stroke-dasharray="2,1.5"/>
-      <line x1="8" y1="4" x2="8" y2="12" stroke-dasharray="2,1.5"/>
-    </svg>Polosan
-  </button>
-  <button class="theme-btn" onclick="setTheme('newspaper',this)"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:-2px;margin-right:5px"><rect x="1" y="2" width="14" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="3" y="5" width="10" height="1.5" rx=".5"/><rect x="3" y="8" width="6" height="1.2" rx=".4"/><rect x="3" y="10.5" width="8" height="1.2" rx=".4"/></svg>Koran Klasik</button>
-  <button class="theme-btn" onclick="setTheme('floral',this)"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:-2px;margin-right:5px"><circle cx="8" cy="8" r="2"/><circle cx="8" cy="3.5" r="1.8"/><circle cx="12.1" cy="5.9" r="1.8"/><circle cx="12.1" cy="10.1" r="1.8"/><circle cx="8" cy="12.5" r="1.8"/><circle cx="3.9" cy="10.1" r="1.8"/><circle cx="3.9" cy="5.9" r="1.8"/></svg>Floral Vintage</button>
-  <button class="theme-btn" onclick="setTheme('luxury',this)"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:-2px;margin-right:5px"><polygon points="8,1 10.2,5.5 15,6.2 11.5,9.6 12.4,14.4 8,12.1 3.6,14.4 4.5,9.6 1,6.2 5.8,5.5"/></svg>Dark Luxury Gold</button>
-  <button class="theme-btn" onclick="setTheme('japan',this)"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:-2px;margin-right:5px"><path d="M8 1 L8 4" stroke="currentColor" stroke-width="1.3" fill="none"/><path d="M3 4 Q3 2 8 1 Q13 2 13 4 L12 14 Q8 15.5 4 14 Z" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M3 4 L13 4" stroke="currentColor" stroke-width="1.2"/><line x1="5.5" y1="7" x2="10.5" y2="7" stroke="currentColor" stroke-width="1"/><line x1="6" y1="10" x2="10" y2="10" stroke="currentColor" stroke-width="1"/></svg>Japanese Minimal</button>
-  <button class="theme-btn" onclick="setTheme('film',this)"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" style="vertical-align:-2px;margin-right:5px"><rect x="1" y="3" width="14" height="10" rx="1"/><rect x="1" y="3" width="2.5" height="10" fill="currentColor" stroke="none" rx=".5"/><rect x="12.5" y="3" width="2.5" height="10" fill="currentColor" stroke="none" rx=".5"/><rect x="2" y="5" width="1" height="1.5" rx=".3" fill="#fff" stroke="none"/><rect x="2" y="7.5" width="1" height="1.5" rx=".3" fill="#fff" stroke="none"/><rect x="2" y="10" width="1" height="1.5" rx=".3" fill="#fff" stroke="none"/><rect x="13" y="5" width="1" height="1.5" rx=".3" fill="#fff" stroke="none"/><rect x="13" y="7.5" width="1" height="1.5" rx=".3" fill="#fff" stroke="none"/><rect x="13" y="10" width="1" height="1.5" rx=".3" fill="#fff" stroke="none"/><rect x="4.5" y="4.5" width="7" height="7" rx=".5" stroke="currentColor"/></svg>Film Strip</button>
-  <button class="theme-btn" onclick="setTheme('sport',this)"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:-2px;margin-right:5px"><path d="M8 1 L9.5 5.5 H14.5 L10.5 8.5 L12 13 L8 10 L4 13 L5.5 8.5 L1.5 5.5 H6.5 Z" stroke="currentColor" stroke-width=".5"/></svg>Tabloid Sport</button>
-  <button class="theme-btn" onclick="setTheme('telegram',this)"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:-2px;margin-right:5px"><rect x="1" y="2" width="14" height="12" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="3" y="4.5" width="10" height="2" rx=".5"/><rect x="3" y="8" width="4.5" height="1.2" rx=".4"/><rect x="3" y="10.2" width="4.5" height="1.2" rx=".4"/><rect x="9" y="8" width="4" height="3.5" rx=".5" fill="none" stroke="currentColor" stroke-width="1"/></svg>Koran Retro</button>
+  <button class="theme-btn active" onclick="setTheme('polosan',this)">Polosan</button>
+  <button class="theme-btn" onclick="setTheme('newspaper',this)">Koran Klasik</button>
+  <button class="theme-btn" onclick="setTheme('floral',this)">Floral Vintage</button>
+  <button class="theme-btn" onclick="setTheme('luxury',this)">Dark Luxury Gold</button>
+  <button class="theme-btn" onclick="setTheme('japan',this)">Japanese Minimal</button>
+  <button class="theme-btn" onclick="setTheme('film',this)">Film Strip</button>
+  <button class="theme-btn" onclick="setTheme('sport',this)">Tabloid Sport</button>
+  <button class="theme-btn" onclick="setTheme('telegram',this)">Koran Retro</button>
+  <button class="theme-btn" onclick="setTheme('bandargrisse',this)">Bandar Grisse</button>
+  <button class="theme-btn" onclick="setTheme('alunalun',this)">Alun-Alun Gresik</button>
+  <button class="theme-btn" onclick="setTheme('yogya',this)">Yogyakarta</button>
+  <button class="theme-btn" onclick="setTheme('surabaya',this)">Surabaya</button>
+  <button class="theme-btn" onclick="setTheme('bandung',this)">Bandung</button>
+  <button class="theme-btn" onclick="setTheme('aboutyou',this)">About You</button>
 </div>
 
 <!-- ══════════ SIZE PICKER ══════════ -->
@@ -656,9 +1010,7 @@ body{
       <div class="po-sub">Photobox · Gresik Kota Baru · Jawa Timur</div>
     </div>
     <div class="po-grid">
-      <div class="po-photo" id="po-p1"><div class="empty-ph">[ Foto 1 ]</div><div class="po-num">01</div></div>
-      <div class="po-photo" id="po-p2"><div class="empty-ph">[ Foto 2 ]</div><div class="po-num">02</div></div>
-      <div class="po-photo" id="po-p3"><div class="empty-ph">[ Foto 3 ]</div><div class="po-num">03</div></div>
+      <div class="po-photo" id="po-p1"><div class="empty-ph">[ Foto ]</div></div>
     </div>
     <div class="po-footer">
       <span>@garkevstudio</span>
@@ -951,53 +1303,363 @@ body{
       <div class="tg-mastname">The Garkev Gazette</div>
       <div class="tg-sub-strip">Gresik Kota Baru · Studio Foto &amp; Kenangan · Jawa Timur</div>
     </div>
-    <div class="tg-headline-wrap">
-      <div class="tg-headline-top">Edisi Khusus Sesi Foto Bersama</div>
-      <div class="tg-headline-main">GRESIK<br>KOTA BARU</div>
-      <div class="tg-headline-deck"><em>"Setiap foto adalah jendela waktu — GarkevStudio, Gresik."</em></div>
+    <div class="tg-headline-bar">
+      <div class="tg-headline-eyebrow">Edisi Khusus</div>
+      <div class="tg-headline-inner">
+        <div class="tg-headline-top">Sesi Foto Bersama — GarkevStudio Photobox</div>
+        <div class="tg-headline-main">GRESIK<br>KOTA BARU</div>
+        <div class="tg-headline-deck"><em>"Setiap foto adalah jendela waktu — GarkevStudio, Gresik."</em></div>
+      </div>
     </div>
     <div class="tg-body">
-      <div class="tg-side">
-        <strong style="font-size:8.5px;display:block;text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid #ccc;padding-bottom:3px;margin-bottom:5px;">Dari Studio</strong>
-        <p>GarkevStudio hadir di jantung Gresik Kota Baru membawa pengalaman foto terbaik. Dengan berbagai tema koran klasik dan modern, setiap sesi foto menjadi kenangan tak terlupakan yang layak disimpan seumur hidup.</p>
-        <br>
-        <p style="font-style:italic;color:#555;">Kunjungi kami di Gresik Kota Baru untuk sesi foto Anda berikutnya.</p>
-        <br>
-        <p><strong>@garkevstudio</strong></p>
-      </div>
-      <div class="tg-center-col">
+      <div class="tg-left-col">
         <div class="tg-main-photo" id="tg-main"><div class="empty-ph">[ Foto 1 ]</div></div>
         <div class="tg-photo-caption">Sesi foto bersama di GarkevStudio Photobox · Gresik Kota Baru</div>
+        <div class="tg-left-text">
+          <strong style="font-size:8.5px;display:block;text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid #ccc;padding-bottom:3px;margin-bottom:5px;">Dari Studio</strong>
+          <p>GarkevStudio hadir di jantung Gresik Kota Baru membawa pengalaman foto terbaik. Dengan berbagai tema koran klasik dan modern, setiap sesi foto menjadi kenangan tak terlupakan yang layak disimpan seumur hidup.</p>
+        </div>
         <div class="tg-center-ad">
           <div class="ca-orn">✦ ◈ ✦</div>
           <div class="ca-name">GarkevStudio</div>
           <div class="ca-sub">Photobox Premium · Gresik</div>
-          <div style="margin-top:6px;width:100%;height:56px;overflow:hidden;border:1px solid #0a0a0a;">
-            <img src="gresik.jpg" alt="Gresik Kota Baru" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(30%) contrast(1.1);">
-          </div>
         </div>
       </div>
-      <div class="tg-side">
-        <strong style="font-size:8.5px;display:block;text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid #ccc;padding-bottom:3px;margin-bottom:5px;">Tentang Gresik</strong>
-        <p>Gresik Kota Baru adalah wajah baru Kabupaten Gresik — kawasan modern yang memadukan industri, gaya hidup, dan kehangatan komunitas lokal. Di sinilah kenangan terbaik lahir.</p>
-        <br>
-        <p>Setiap momen berharga di kota ini layak diabadikan dengan kualitas terbaik. GarkevStudio siap menjadi partner foto Anda.</p>
-      </div>
-    </div>
-    <div class="tg-photo-row">
-      <div class="tg-photo-cell" id="tg-sm1">
-        <div class="empty-ph">[ Foto 2 ]</div>
-        <div class="tg-cell-num">I</div>
-      </div>
-      <div class="tg-photo-cell" id="tg-sm2">
-        <div class="empty-ph">[ Foto 3 ]</div>
-        <div class="tg-cell-num">II</div>
+      <div class="tg-right-col">
+        <div class="tg-photo-cell" id="tg-sm1">
+          <div class="empty-ph">[ Foto 2 ]</div>
+          <div class="tg-cell-num">I</div>
+        </div>
+        <div class="tg-photo-cell" id="tg-sm2">
+          <div class="empty-ph">[ Foto 3 ]</div>
+          <div class="tg-cell-num">II</div>
+        </div>
       </div>
     </div>
     <div class="tg-footer">
       <span>@garkevstudio</span>
       <span>The Garkev Gazette · Gresik Kota Baru</span>
       <span>Page 01</span>
+    </div>
+  </div>
+
+  <!-- TEMA KORAN: BANDAR GRISSE -->
+  <div id="t-bandargrisse" class="theme-result" style="display:none;">
+    <div class="bg-top">
+      <span>Edisi Khusus Photobox</span>
+      <strong style="font-family:'UnifrakturMaguntia',cursive;font-size:14px;">GarkevStudio</strong>
+      <span id="bg-tanggal">—</span>
+    </div>
+    <div class="bg-mastname">The Bandar Grisse Post</div>
+    <div class="bg-sub">Bandar Grisse · Gresik Lama · Studio Foto &amp; Kenangan · Jawa Timur</div>
+    <div class="bg-headline">BANDAR<br>GRISSE</div>
+    <!-- Split: foto utama kiri besar + kolom kanan foto kecil + studio box -->
+    <div class="bg-split">
+      <div class="bg-photo-main" id="bg-main"><div class="empty-ph">[ Foto 1 ]</div></div>
+      <div class="bg-right-stack">
+        <div class="bg-photo-sm" id="bg-sm1"><div class="empty-ph">[ Foto 2 ]</div></div>
+        <div class="bg-center-box">
+          <div style="font-size:8px;font-style:italic;margin-bottom:4px;color:#5a4030;">— Studio Pilihan Anda —</div>
+          <div class="bc-name">GarkevStudio</div>
+          <p>Mengabadikan kenangan<br>di tanah bersejarah Gresik.</p>
+        </div>
+      </div>
+    </div>
+    <div class="koran-mid bg-style"><div class="koran-mid-title">Bandar Grisse:<br>Pelabuhan Tua<br>yang Abadi</div><div class="koran-mid-tag"><span>PHOTOBOX<br>MEMORIES</span></div></div>
+    <div class="bg-cols">
+      <div class="bg-col">
+        <p>Bandar Grisse — pelabuhan tua yang menjadi cikal bakal Kota Gresik. Di tepi pantai berlumpur ini, jejak pedagang dari Tiongkok, Gujarat, dan Arab menyatu dalam harmoni budaya yang abadi.</p>
+      </div>
+      <div class="bg-col">
+        <div class="bg-photo-sm" id="bg-sm2" style="height:80px;margin-bottom:5px;"><div class="empty-ph">[ Foto 3 ]</div></div>
+        <p style="font-size:7.8px;line-height:1.55;text-align:justify;">Kota Gresik, dengan pelabuhan Bandar Grisse-nya yang legendaris, menyimpan ribuan kisah pelaut dan pedagang masa lalu.</p>
+      </div>
+      <div class="bg-col">
+        <p>Aroma laut dan semilir angin Bandar Grisse mengiringi setiap sesi foto bersama orang-orang tercinta. Kenangan yang tercetak di sini membawa pulang serpihan waktu yang tak ternilai harganya.</p>
+      </div>
+    </div>
+    <div class="bg-footer">
+      <span>@garkevstudio</span>
+      <span>Bandar Grisse — Gresik, Jawa Timur</span>
+      <span>Page 01</span>
+    </div>
+  </div>
+
+  <!-- TEMA KORAN: ALUN-ALUN GRESIK -->
+  <div id="t-alunalun" class="theme-result" style="display:none;">
+    <div class="aa-ornament-bar">✦ ◆ ✦ ◆ ✦</div>
+    <div class="aa-mastname">Alun-Alun Gazette</div>
+    <div class="aa-kicker">
+      <span>Edisi Foto Spesial</span>
+      <span id="aa-tanggal">—</span>
+      <span>@garkevstudio</span>
+    </div>
+    <!-- Headline majalah: teks kiri besar, aside kanan -->
+    <div class="aa-headline-row">
+      <div class="aa-headline">ALUN-<br>ALUN<br>GRESIK</div>
+      <div class="aa-headline-aside">Alun-alun Gresik — ruang terbuka yang menjadi jantung kota sejak zaman kerajaan. Di sini warga berkumpul, anak-anak berlari, dan kenangan keluarga tercipta di bawah langit biru Gresik yang hangat dan penuh kehidupan.</div>
+    </div>
+    <!-- Foto utama lebar penuh -->
+    <div class="aa-photo-main" id="aa-main"><div class="empty-ph">[ Foto 1 ]</div></div>
+    <div class="aa-caption-bar">Sesi foto bersama GarkevStudio Photobox · Alun-Alun Gresik, Jawa Timur</div>
+    <!-- Strip 2 foto kecil horisontal -->
+    <div class="aa-photo-strip">
+      <div class="aa-photo-sm" id="aa-sm1"><div class="empty-ph">[ Foto 2 ]</div><div class="aa-photo-sm-num">02</div></div>
+      <div class="aa-photo-sm" id="aa-sm2"><div class="empty-ph">[ Foto 3 ]</div><div class="aa-photo-sm-num">03</div></div>
+    </div>
+    <div class="koran-mid aa-style"><div class="koran-mid-title">Alun-Alun Gresik:<br>Jantung Kota<br>yang Hangat</div><div class="koran-mid-tag"><span>PHOTOBOX<br>MEMORIES</span></div></div>
+    <div class="aa-cols">
+      <div class="aa-col">
+        <p>Setiap sudut alun-alun menyimpan cerita — dari festival budaya hingga momen tenang sore hari. GarkevStudio hadir mengabadikan setiap kenangan berharga bersama keluarga dan sahabat tercinta.</p>
+      </div>
+      <div class="aa-col">
+        <div class="aa-center-box">
+          <div style="font-size:8px;font-style:italic;margin-bottom:4px;color:#5a4820;">— Studio Pilihan Anda —</div>
+          <div class="ac-name">GarkevStudio</div>
+          <p>Foto terbaik di jantung<br>Kota Gresik.</p>
+        </div>
+      </div>
+      <div class="aa-col">
+        <p>Di bawah pohon-pohon rindang yang mengelilingi alun-alun, waktu seolah berjalan lebih lambat. Momen kebersamaan di kota Wali ini layak diabadikan dalam kenangan yang tak terlupakan.</p>
+      </div>
+    </div>
+    <div class="aa-footer">
+      <span>@garkevstudio</span>
+      <span>Alun-Alun Gresik — Jawa Timur</span>
+      <span>Page 01</span>
+    </div>
+  </div>
+
+  <!-- TEMA KORAN: YOGYAKARTA -->
+  <div id="t-yogya" class="theme-result" style="display:none;">
+    <div class="yo-header-strip">
+      <span>Edisi Istimewa</span>
+      <strong style="font-family:'UnifrakturMaguntia',cursive;font-size:14px;">GarkevStudio</strong>
+      <span id="yo-tanggal">—</span>
+    </div>
+    <div class="yo-mastname">Yogya Koerier</div>
+    <div class="yo-tagline">✦ Kota Budaya · Studio Foto &amp; Kenangan ✦</div>
+    <div class="yo-kicker">
+      <span>Edisi Foto Spesial</span><span>↘</span><span>Kenangan &amp; Budaya</span><span>↘</span><span>Vol. 01</span>
+    </div>
+    <div class="yo-headline"><em>Yogya-<br>karta</em></div>
+    <!-- Asimetris: foto besar kiri + panel teks & foto kecil kanan -->
+    <div class="yo-main-split">
+      <div class="yo-photo-main" id="yo-main"><div class="empty-ph">[ Foto 1 ]</div></div>
+      <div class="yo-right-panel">
+        <div class="yo-right-text">
+          <strong>Tentang Kota</strong>
+          <p>Yogyakarta — kota budaya yang tak pernah tidur. Dari Keraton yang megah hingga gang-gang sempit Malioboro yang ramai, kota ini menyimpan jiwa yang hangat dan seni yang tak pernah padam.</p>
+        </div>
+        <div class="yo-photo-sm" id="yo-sm1">
+          <div class="empty-ph">[ Foto 2 ]</div>
+          <div class="yo-photo-sm-label">Kenangan · Yogya</div>
+        </div>
+        <div class="yo-photo-sm" id="yo-sm2">
+          <div class="empty-ph">[ Foto 3 ]</div>
+          <div class="yo-photo-sm-label">Abadi · GarkevStudio</div>
+        </div>
+      </div>
+    </div>
+    <div class="koran-mid yo-style"><div class="koran-mid-title">Yogyakarta:<br>Kota Budaya<br>yang Istimewa</div><div class="koran-mid-tag"><span>PHOTOBOX<br>MEMORIES</span></div></div>
+    <div class="yo-cols">
+      <div class="yo-col">
+        <p>Di Yogyakarta, setiap foto bercerita tentang harmoni — antara tradisi dan modernitas, antara keraton dan kafe kekinian, antara batik dan senyum yang hangat.</p>
+      </div>
+      <div class="yo-col">
+        <div class="yo-center-box">
+          <div style="font-size:8px;font-style:italic;margin-bottom:4px;color:#5a4820;">— Studio Pilihan Anda —</div>
+          <div class="yc-name">GarkevStudio</div>
+          <p>Mengabadikan momen<br>indah di Kota Istimewa.</p>
+        </div>
+      </div>
+      <div class="yo-col">
+        <p>Dari sunrise di Prambanan hingga senja di Bukit Bintang, Yogyakarta adalah kanvas bagi kenangan terbaik. Biarkan GarkevStudio menjadi saksi momen berharga Anda.</p>
+      </div>
+    </div>
+    <div class="yo-footer">
+      <span>@garkevstudio</span>
+      <span>Yogyakarta — Daerah Istimewa</span>
+      <span>Page 01</span>
+    </div>
+  </div>
+
+  <!-- TEMA KORAN: SURABAYA -->
+  <div id="t-surabaya" class="theme-result" style="display:none;">
+    <div class="su-topbar">
+      <span>Edisi Khusus Photobox</span>
+      <strong style="font-family:'UnifrakturMaguntia',cursive;font-size:14px;">GarkevStudio</strong>
+      <span id="su-tanggal">—</span>
+    </div>
+    <div class="su-mastname">Soerabaia Herald</div>
+    <div class="su-kicker">
+      <span>Edisi Foto Spesial</span><span>↘</span><span>Kenangan Kota Pahlawan</span><span>↘</span><span>Vol. 01</span>
+    </div>
+    <!-- Headline kiri besar + deck kanan -->
+    <div class="su-headline-block">
+      <div class="su-headline">SURA-<br>BAYA</div>
+      <div class="su-headline-deck">Kota Pahlawan yang tak pernah tidur. Dari hiruk-pikuk Jalan Tunjungan hingga ketenangan kawasan Kota Lama — Surabaya adalah kota dengan semangat yang membara dan kenangan yang tak terlupakan bersama GarkevStudio.</div>
+    </div>
+    <!-- Strip 3 foto sejajar -->
+    <div class="su-photo-strip">
+      <div class="su-photo-main" id="su-main">
+        <div class="empty-ph">[ Foto 1 ]</div>
+        <div class="su-photo-num">Foto Pertama</div>
+      </div>
+      <div class="su-photo-main" id="su-sm1">
+        <div class="empty-ph">[ Foto 2 ]</div>
+        <div class="su-photo-num">Foto Kedua</div>
+      </div>
+      <div class="su-photo-main" id="su-sm2">
+        <div class="empty-ph">[ Foto 3 ]</div>
+        <div class="su-photo-num">Foto Ketiga</div>
+      </div>
+    </div>
+    <div class="koran-mid su-style"><div class="koran-mid-title">Surabaya:<br>Kota Pahlawan<br>yang Tak Tidur</div><div class="koran-mid-tag"><span>PHOTOBOX<br>MEMORIES</span></div></div>
+    <div class="su-cols">
+      <div class="su-col">
+        <p>Semangat juang warga Surabaya tercermin dalam setiap sudut kota — dari patung Suro dan Boyo yang legendaris hingga gedung-gedung tua yang tegak berdiri dengan bangga.</p>
+      </div>
+      <div class="su-col">
+        <div class="su-center-box">
+          <div style="font-size:8px;font-style:italic;margin-bottom:4px;color:#50401a;">— Studio Pilihan Anda —</div>
+          <div class="sc-name">GarkevStudio</div>
+          <p>Foto terbaik di Kota<br>Pahlawan Surabaya.</p>
+        </div>
+      </div>
+      <div class="su-col">
+        <p>Dari wisata kuliner di Genteng Kali hingga petualangan di Kota Tua, Surabaya selalu menyimpan cerita baru. Biarkan momen terbaik Anda terabadikan oleh GarkevStudio.</p>
+      </div>
+    </div>
+    <div class="su-footer">
+      <span>@garkevstudio</span>
+      <span>Surabaya — Jawa Timur</span>
+      <span>Page 01</span>
+    </div>
+  </div>
+
+  <!-- TEMA KORAN: BANDUNG -->
+  <div id="t-bandung" class="theme-result" style="display:none;">
+    <div class="bd-header">
+      <span>Edisi Istimewa Photobox</span>
+      <strong style="font-family:'UnifrakturMaguntia',cursive;font-size:14px;">GarkevStudio</strong>
+      <span id="bd-tanggal">—</span>
+    </div>
+    <div class="bd-mastname">Bandoeng Courant</div>
+    <div class="bd-sub">✦ Paris van Java · Studio Foto &amp; Kenangan ✦</div>
+    <div class="bd-kicker">
+      <span>Edisi Foto Spesial</span><span>↘</span><span>Kenangan &amp; Alam</span><span>↘</span><span>Vol. 01</span>
+    </div>
+    <!-- Headline dengan ornamen sisi -->
+    <div class="bd-headline-wrap">
+      <div class="bd-headline-orn">❧</div>
+      <div class="bd-headline">BANDUNG</div>
+      <div class="bd-headline-orn">❧</div>
+    </div>
+    <!-- Mosaic atas: foto besar kiri + studio+foto kanan -->
+    <div class="bd-mosaic-top">
+      <div class="bd-photo-main" id="bd-main"><div class="empty-ph">[ Foto 1 ]</div></div>
+      <div class="bd-right-top">
+        <div class="bd-center-box">
+          <div style="font-size:8px;font-style:italic;margin-bottom:4px;color:#3a4818;">— Studio Pilihan Anda —</div>
+          <div class="bc2-name">GarkevStudio</div>
+          <p>Mengabadikan momen<br>di Paris van Java.</p>
+        </div>
+        <div class="bd-photo-sm-top" id="bd-sm1"><div class="empty-ph">[ Foto 2 ]</div></div>
+      </div>
+    </div>
+    <!-- Mosaic bawah: 2 foto lebar sejajar -->
+    <div class="bd-mosaic-bottom">
+      <div class="bd-photo-sm" id="bd-sm2">
+        <div class="empty-ph">[ Foto 3 ]</div>
+        <div class="bd-photo-sm-label">Kenangan · Bandung</div>
+      </div>
+      <div class="bd-photo-sm" style="border-right:none;">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(14,18,10,.06);padding:8px;text-align:center;">
+          <div>
+            <div style="font-family:'UnifrakturMaguntia',cursive;font-size:18px;color:#0e120a;line-height:1;margin-bottom:3px;">GarkevStudio</div>
+            <div style="font-size:7px;color:#4a5828;letter-spacing:.14em;text-transform:uppercase;">Paris van Java · Bandung</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="koran-mid bd-style"><div class="koran-mid-title">Bandung:<br>Paris van Java<br>yang Memukau</div><div class="koran-mid-tag"><span>PHOTOBOX<br>MEMORIES</span></div></div>
+    <div class="bd-cols">
+      <div class="bd-col">
+        <p>Bandung — Paris van Java yang memikat hati siapa pun yang datang. Dikelilingi pegunungan hijau dan udara sejuk, kota ini menjadi tempat di mana kenangan tumbuh seiring kopi yang mengepul.</p>
+      </div>
+      <div class="bd-col">
+        <p>Dari kawasan Dago yang artistik hingga factory outlet yang ramai, Bandung selalu punya cerita untuk diceritakan. GarkevStudio hadir mengabadikan setiap momen indah di kota kembang.</p>
+      </div>
+      <div class="bd-col">
+        <p>Udara sejuk Bandung adalah latar sempurna untuk setiap sesi foto bersama keluarga dan sahabat. Di kota penuh kreativitas ini, setiap foto membawa pulang kehangatan yang tak tergantikan.</p>
+      </div>
+    </div>
+    <div class="bd-footer">
+      <span>@garkevstudio</span>
+      <span>Bandung — Jawa Barat</span>
+      <span>Page 01</span>
+    </div>
+  </div>
+
+  <!-- TEMA: ABOUT YOU 💌 -->
+  <div id="t-aboutyou" class="theme-result" style="display:none;">
+    <span class="ay-heart-tl">♥</span>
+    <span class="ay-heart-tr">♥</span>
+    <span class="ay-heart-bl">♥</span>
+    <span class="ay-heart-br">♥</span>
+    <div class="ay-topbar">
+      <span>Edisi Istimewa · Untuk Kamu Seorang</span>
+      <strong style="font-family:'UnifrakturMaguntia',cursive;font-size:14px;">GarkevStudio</strong>
+      <span id="ay-tanggal">—</span>
+    </div>
+    <div class="ay-mastname">About You</div>
+    <div class="ay-sub">Karena Kamu Adalah Cerita Favoritku · GarkevStudio Photobox · Gresik</div>
+    <div class="ay-headline">
+      <em>— tentang —</em>
+      Kamu &amp;<br>Aku
+    </div>
+    <!-- Body: foto besar kiri + kutipan & foto kanan -->
+    <div class="ay-body">
+      <div class="ay-photo-main" id="ay-main"><div class="empty-ph">[ Foto 1 ]</div></div>
+      <div class="ay-right-col">
+        <div class="ay-quote-box">
+          <div class="ay-quote-mark">"</div>
+          <div class="ay-quote-text">Di antara semua hal indah di dunia ini, kamu adalah yang paling aku syukuri setiap harinya.</div>
+          <div class="ay-quote-attr">— untukmu, selalu —</div>
+        </div>
+        <div class="ay-photo-sm-right" id="ay-sm1">
+          <div class="empty-ph">[ Foto 2 ]</div>
+          <div class="ay-photo-sm-right-label">Momen Kita ♥</div>
+        </div>
+      </div>
+    </div>
+    <!-- Mid bar -->
+    <div class="ay-mid">
+      <div class="ay-mid-title">Kenangan bersama<br>orang yang kita cintai —<br>adalah harta yang tak ternilai.</div>
+      <div class="ay-mid-studio">
+        <div class="ay-studio-name">GarkevStudio</div>
+        <div class="ay-studio-sub">♥ Photobox · Gresik ♥</div>
+      </div>
+    </div>
+    <!-- Strip 2 foto bawah -->
+    <div class="ay-photo-strip">
+      <div class="ay-photo-sm" id="ay-sm2">
+        <div class="empty-ph">[ Foto 3 ]</div>
+        <div class="ay-photo-sm-caption">Bersamamu, waktu terasa terlalu singkat ♥</div>
+      </div>
+      <div class="ay-photo-sm" style="border-right:none;">
+        <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:rgba(90,26,26,.04);padding:12px;text-align:center;">
+          <div style="font-size:28px;color:#c8826a;opacity:.6;">♥</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:#5a1a1a;line-height:1.5;">Abadikan setiap<br>momen bersamanya.</div>
+          <div style="font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:#8a3a2a;margin-top:2px;">@garkevstudio</div>
+        </div>
+      </div>
+    </div>
+    <div class="ay-footer">
+      <span>@garkevstudio</span>
+      <span class="ay-footer-heart">♥ ♥ ♥</span>
+      <span>Gresik Kota Baru · Jawa Timur</span>
     </div>
   </div>
 
@@ -1117,10 +1779,18 @@ buildFilmHoles('film-holes-bot');
 /* ══════════════════════════════════
    THEME
 ══════════════════════════════════ */
+function updateDotsDisplay(){
+  const total=getShotCount();
+  for(let i=0;i<3;i++){
+    const dot=document.getElementById('dot'+i);
+    if(dot) dot.style.display=i<total?'':'none';
+  }
+}
 function setTheme(name, btn){
   activeTheme=name;
   document.querySelectorAll('.theme-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
+  updateDotsDisplay();
   saveState();
   if(capturedImages.length>0){
     populateTheme(name);
@@ -1169,6 +1839,10 @@ function applyFilter(){
 /* ══════════════════════════════════
    SESSION
 ══════════════════════════════════ */
+/* Tema polosan hanya butuh 1 foto, tema lain 3 foto */
+function getShotCount(){
+  return activeTheme==='polosan' ? 1 : 3;
+}
 function startSession(){
   if(isRunning)return;
   capturedImages=[];currentShot=0;
@@ -1177,18 +1851,19 @@ function startSession(){
   takeNextShot();
 }
 function takeNextShot(){
-  if(currentShot>=3){finishSession();return;}
+  const totalShots=getShotCount();
+  if(currentShot>=totalShots){finishSession();return;}
   isRunning=true;
   let remaining=parseInt(document.getElementById('timerSel').value);
   setDotActive(currentShot);
   overlay.classList.add('active');
-  shotLabel.textContent=`Foto ${currentShot+1} dari 3`;
+  shotLabel.textContent=totalShots===1?`Foto 1 dari 1`:`Foto ${currentShot+1} dari ${totalShots}`;
   countNum.textContent=remaining;animateNum();
-  setStatus(`[Foto ${currentShot+1}/3] berpose dalam ${remaining} detik…`);
+  setStatus(`[Foto ${currentShot+1}/${totalShots}] berpose dalam ${remaining} detik…`);
   timerInterval=setInterval(()=>{
     remaining--;
     if(remaining<=0){clearInterval(timerInterval);shootPhoto();}
-    else{countNum.textContent=remaining;animateNum();setStatus(`[Foto ${currentShot+1}/3] ${remaining} detik…`);}
+    else{countNum.textContent=remaining;animateNum();setStatus(`[Foto ${currentShot+1}/${totalShots}] ${remaining} detik…`);}
   },1000);
 }
 function animateNum(){
@@ -1207,7 +1882,7 @@ function shootPhoto(){
     capturedImages.push(url);
     setDotDone(currentShot);currentShot++;
     overlay.classList.remove('active');isRunning=false;
-    if(currentShot<3){setStatus(`✓ Foto ${currentShot} diambil! Bersiap…`);setTimeout(takeNextShot,1500);}
+    if(currentShot<getShotCount()){setStatus(`✓ Foto ${currentShot} diambil! Bersiap…`);setTimeout(takeNextShot,1500);}
     else finishSession();
   });
 }
@@ -1256,7 +1931,7 @@ function addStamp(id,txt){
 }
 
 function populateAllThemes(){
-  ['polosan','newspaper','floral','luxury','japan','film','sport','telegram'].forEach(t=>populateTheme(t));
+  ['polosan','newspaper','floral','luxury','japan','film','sport','telegram','bandargrisse','alunalun','yogya','surabaya','bandung','aboutyou'].forEach(t=>populateTheme(t));
 }
 
 function populateTheme(t){
@@ -1266,8 +1941,6 @@ function populateTheme(t){
   if(t==='polosan'){
     document.getElementById('po-tanggal').textContent=d;
     if(p1)setImg('po-p1',p1);
-    if(p2)setImg('po-p2',p2);
-    if(p3)setImg('po-p3',p3);
   }
   if(t==='newspaper'){
     document.getElementById('np-tanggal').textContent=d;
@@ -1310,6 +1983,42 @@ function populateTheme(t){
     if(p1)setImg('tg-main',p1,'grayscale(30%) contrast(1.1)');
     if(p2)setImg('tg-sm1',p2,'grayscale(20%) contrast(1.05)');
     if(p3)setImg('tg-sm2',p3,'grayscale(20%) contrast(1.05)');
+  }
+  if(t==='bandargrisse'){
+    document.getElementById('bg-tanggal').textContent=d;
+    if(p1)setImg('bg-main',p1,'sepia(20%) contrast(1.05)');
+    if(p2)setImg('bg-sm1',p2,'sepia(20%) contrast(1.05)');
+    if(p3)setImg('bg-sm2',p3,'sepia(20%) contrast(1.05)');
+  }
+  if(t==='alunalun'){
+    document.getElementById('aa-tanggal').textContent=d;
+    if(p1)setImg('aa-main',p1,'sepia(15%) contrast(1.08)');
+    if(p2)setImg('aa-sm1',p2,'sepia(15%) contrast(1.05)');
+    if(p3)setImg('aa-sm2',p3,'sepia(15%) contrast(1.05)');
+  }
+  if(t==='yogya'){
+    document.getElementById('yo-tanggal').textContent=d;
+    if(p1)setImg('yo-main',p1,'sepia(18%) contrast(1.06)');
+    if(p2)setImg('yo-sm1',p2,'sepia(18%) contrast(1.05)');
+    if(p3)setImg('yo-sm2',p3,'sepia(18%) contrast(1.05)');
+  }
+  if(t==='surabaya'){
+    document.getElementById('su-tanggal').textContent=d;
+    if(p1)setImg('su-main',p1,'sepia(12%) contrast(1.08)');
+    if(p2)setImg('su-sm1',p2,'sepia(12%) contrast(1.05)');
+    if(p3)setImg('su-sm2',p3,'sepia(12%) contrast(1.05)');
+  }
+  if(t==='bandung'){
+    document.getElementById('bd-tanggal').textContent=d;
+    if(p1)setImg('bd-main',p1,'sepia(10%) contrast(1.06)');
+    if(p2)setImg('bd-sm1',p2,'sepia(10%) contrast(1.05)');
+    if(p3)setImg('bd-sm2',p3,'sepia(10%) contrast(1.05)');
+  }
+  if(t==='aboutyou'){
+    document.getElementById('ay-tanggal').textContent=d;
+    if(p1)setImg('ay-main',p1,'sepia(25%) contrast(1.05) brightness(.98)');
+    if(p2)setImg('ay-sm1',p2,'sepia(30%) contrast(1.05)');
+    if(p3)setImg('ay-sm2',p3,'sepia(22%) contrast(1.05)');
   }
 
   document.querySelectorAll('.theme-result').forEach(el=>el.style.display='none');
@@ -1470,7 +2179,7 @@ async function kirimWA(){
   const d=new Date();
   const mn=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
   const ds=`${d.getDate()} ${mn[d.getMonth()]} ${d.getFullYear()}`;
-  ['po-tanggal','np-tanggal','fl-tanggal','lx-tanggal','jp-tanggal','film-tanggal','sp-tanggal','tg-tanggal'].forEach(id=>{
+  ['po-tanggal','np-tanggal','fl-tanggal','lx-tanggal','jp-tanggal','film-tanggal','sp-tanggal','tg-tanggal','bg-tanggal','aa-tanggal','yo-tanggal','su-tanggal','bd-tanggal','ay-tanggal'].forEach(id=>{
     const el=document.getElementById(id);if(el)el.textContent=ds;
   });
 
@@ -1484,6 +2193,7 @@ async function kirimWA(){
         btn.classList.toggle('active',!!match);
       });
     }
+    updateDotsDisplay();
 
     const savedSize=sessionStorage.getItem('gs_size');
     if(savedSize){
